@@ -1,0 +1,11 @@
+{
+    "require": {
+        "ext-bcmath": "*",
+        "ext-pdo": "*",
+        "ext-gd": "*",
+        "phpmailer/phpmailer": "^6.5"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    }
+}
