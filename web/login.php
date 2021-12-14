@@ -21,7 +21,7 @@ if (isset($_POST["login_btn"])) {
 }
 ?>
 
-<?php include_once "header.php" ?>
+<?php include_once "../template/header.php" ?>
 
 <div class="text-center">
   <form class="login-form" action="" method="post">
@@ -48,4 +48,4 @@ if (isset($_POST["login_btn"])) {
   </form>
 </div>
 
-<?php include_once "footer.php" ?>
+<?php include_once "../template/footer.php" ?>
