@@ -4,7 +4,7 @@
 // Author: 1760169 - Le Anh Tai
 // Email: leanhtai01@gmail.com
 // GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce
-require_once "../conf/db.conf.php";
+require_once(dirname(__DIR__) . "/conf/db.conf.php");
 
 /**
  * Check whether login is valid.
