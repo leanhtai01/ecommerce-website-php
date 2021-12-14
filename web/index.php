@@ -1,5 +1,5 @@
 <?php
-require_once "../conf/init.conf.php";
+require_once(dirname(__DIR__) . "/conf/init.conf.php");
 
 $title = "leanhtai01-ecommerce";
 $page = "index";
