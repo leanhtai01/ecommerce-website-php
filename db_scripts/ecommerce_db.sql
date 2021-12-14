@@ -16,7 +16,7 @@ FLUSH PRIVILEGES;
 
 USE ecommerce_db;
 
-CREATE TABLE users (
+CREATE TABLE accounts (
   id INT NOT NULL AUTO_INCREMENT,
   fullname VARCHAR(100) NULL,
   email VARCHAR(100) NOT NULL,

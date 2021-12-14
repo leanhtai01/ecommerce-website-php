@@ -21,7 +21,7 @@ function is_valid_login($email, $password)
   global $pdo;
 
   // try to get account's info using email
-  $sql = "SELECT id, fullname, password FROM users WHERE email = :email;";
+  $sql = "SELECT id, fullname, password FROM accounts WHERE email = :email;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["email" => $email]);
   $account_info = $stmt->fetch(PDO::FETCH_ASSOC);
