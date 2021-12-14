@@ -31,7 +31,7 @@
             <li class="nav-item">
               <a class="nav-link <?php echo $page == "index" ? "active" : "" ?>" aria-current="page" href="index.php">Home</a>
             </li>
-            <?php if (!isset($_SESSION["user_info"])) : ?>
+            <?php if (!isset($_SESSION["account_info"])) : ?>
               <li class="nav-item">
                 <a class="nav-link <?php echo $page == "login" ? "active" : "" ?>" href="login.php">Login</a>
               </li>

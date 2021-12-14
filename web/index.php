@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $title = "leanhtai01-ecommerce";
 $page = "index";
 ?>
