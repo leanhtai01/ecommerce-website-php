@@ -1,6 +1,6 @@
 <?php
-require_once "../conf/init.conf.php";
-require_once "../db_access/account.php";
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
 $title = "Login";
 $page = "login";
@@ -13,26 +13,26 @@ if (isset($_POST["login_btn"])) {
 
   if ($account_info) {
     $_SESSION["account_info"] = $account_info;
-    header('Location: index.php');
+    header("Location: " . $host_url . "/index.php");
   } else {
     $error = "Invalid email or password!";
   }
 }
 ?>
 
-<?php include_once "../template/header.php" ?>
+<?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
 <div class="text-center">
   <form class="login-form" action="" method="post">
     <h1 class="mt-4">Login</h1>
-    
+
     <!-- Display error message -->
     <?php if ($error) : ?>
       <div class="alert alert-danger" role="alert">
         <?php echo $error; ?>
       </div>
     <?php endif; ?>
-    
+
     <div class="form-floating mb-3 mt-4">
       <input type="email" class="form-control" name="email" id="email" placeholder="Email" required autofocus>
       <label for="email">Email address</label>
@@ -47,4 +47,4 @@ if (isset($_POST["login_btn"])) {
   </form>
 </div>
 
-<?php include_once "../template/footer.php" ?>
+<?php include_once(dirname(dirname(__DIR__)) . "/template/footer.php") ?>

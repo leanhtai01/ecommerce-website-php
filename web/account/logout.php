@@ -1,5 +1,5 @@
 <?php
-require_once "../conf/init.conf.php";
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 
 session_destroy();
-header('Location: index.php');
+header("Location: " . $host_url . "/index.php");
