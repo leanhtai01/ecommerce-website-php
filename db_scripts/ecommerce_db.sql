@@ -18,7 +18,7 @@ USE ecommerce_db;
 
 CREATE TABLE accounts (
   id INT NOT NULL AUTO_INCREMENT,
-  fullname VARCHAR(100) NULL,
+  fullname VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   password VARCHAR(255) NOT NULL,
   phone_number VARCHAR(20) NOT NULL,
