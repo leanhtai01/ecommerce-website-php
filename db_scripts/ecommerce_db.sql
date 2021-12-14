@@ -22,7 +22,7 @@ CREATE TABLE accounts (
   email VARCHAR(100) NOT NULL,
   password VARCHAR(255) NOT NULL,
   phone_number VARCHAR(20) NOT NULL,
-  address VARCHAR(255) NULL,
+  address VARCHAR(255) NOT NULL,
   CONSTRAINT pk_users PRIMARY KEY (id),
   CONSTRAINT unq_users_email UNIQUE (email),
   CONSTRAINT unq_users_phone_number UNIQUE (phone_number)
