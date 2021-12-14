@@ -23,7 +23,21 @@ CREATE TABLE accounts (
   password VARCHAR(255) NOT NULL,
   phone_number VARCHAR(20) NOT NULL,
   address VARCHAR(255) NOT NULL,
+  role_id INT NOT NULL,
   CONSTRAINT pk_users PRIMARY KEY (id),
   CONSTRAINT unq_users_email UNIQUE (email),
   CONSTRAINT unq_users_phone_number UNIQUE (phone_number)
 );
+
+CREATE TABLE roles (
+  id INT NOT NULL,
+  role_name VARCHAR(50) NOT NULL,
+  description VARCHAR(100) NOT NULL,
+  CONSTRAINT pk_roles PRIMARY KEY (id),
+  CONSTRAINT unq_roles_role_name UNIQUE (role_name)
+);
+
+INSERT INTO roles (id, role_name, description)
+VALUES (0, 'admin', 'Administrator'),
+       (1, 'user', 'Registered user'),
+       (2, 'guest', 'Unregistered user');
