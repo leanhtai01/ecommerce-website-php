@@ -28,6 +28,12 @@
             <li class="nav-item">
               <a class="nav-link <?php echo $page == "index" ? "active" : "" ?>" aria-current="page" href="index.php">Home</a>
             </li>
+            <?php if (!isset($_SESSION["user_info"])) : ?>
+              <li class="nav-item">
+                <a class="nav-link <?php echo $page == "login" ? "active" : "" ?>" href="login.php">Login</a>
+              </li>
+            <?php else : ?>
+            <?php endif; ?>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
