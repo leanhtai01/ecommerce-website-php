@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+require_once "../conf/init.conf.php";
 require_once "../db_access/account.php";
 
 $title = "Login";

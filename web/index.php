@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../conf/init.conf.php";
 
 $title = "leanhtai01-ecommerce";
 $page = "index";
