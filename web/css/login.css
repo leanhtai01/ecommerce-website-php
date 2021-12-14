@@ -1,0 +1,10 @@
+/* File: login.css
+   Style login.php
+   Author: 1760169 - Le Anh Tai
+   Email: leanhtai01@gmail.com
+   GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce */
+
+.login-form {
+    max-width: 300px;
+    margin: auto;
+}
