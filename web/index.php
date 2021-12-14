@@ -5,8 +5,8 @@ $title = "leanhtai01-ecommerce";
 $page = "index";
 ?>
 
-<?php include_once "../template/header.php" ?>
+<?php include_once(dirname(__DIR__) . "/template/header.php") ?>
 
 <h1>This is index.php page!</h1>
 
-<?php include_once "../template/footer.php" ?>
+<?php include_once(dirname(__DIR__) . "/template/footer.php") ?>
