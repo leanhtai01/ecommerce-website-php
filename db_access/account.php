@@ -61,14 +61,16 @@ function add_account($account_info)
   }
 
   // encrypted password
-  $account_info["password"] = password_hash($account_info["password"],
-                                            PASSWORD_DEFAULT);
+  $account_info["password"] = password_hash(
+    $account_info["password"],
+    PASSWORD_DEFAULT
+  );
 
   // add account
   $sql = "INSERT INTO accounts "
-       . "(fullname, email, password, phone_number, address, role_id) "
-       . "VALUES "
-       . "(:fullname, :email, :password, :phone_number, :address, :role_id);";
+    . "(fullname, email, password, phone_number, address, role_id) "
+    . "VALUES "
+    . "(:fullname, :email, :password, :phone_number, :address, :role_id);";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($account_info);
 
@@ -107,4 +109,50 @@ function is_phone_number_exists($phone_number)
   $stmt->execute(["phone_number" => $phone_number]);
 
   return $stmt->fetchColumn() > 0;
+}
+
+/**
+ * Create random token.
+ *
+ * @param string $email Email address.
+ *
+ * @return array Return array containt token's info (email, token, expire_date).
+ */
+function create_token($email)
+{
+  global $pdo;
+
+  // create token's information
+  $token = bin2hex(random_bytes(10));
+  $expire_date = date("Y-m-d H:i:s", time() + 15 * 60);
+  $token_info = [
+    "email" => $email,
+    "token" => $token,
+    "expire_date" => $expire_date
+  ];
+
+  $sql = "INSERT INTO tokens (email, token, expire_date) "
+       . "VALUES (:email, :token, :expire_date);";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($token_info);
+
+  return $token_info;
+}
+
+/**
+ * Get fullname by email.
+ *
+ * @param string $email Email address.
+ *
+ * @return string|false Return fullname if email exists, false otherwise
+ */
+function get_fullname_by_email($email)
+{
+  global $pdo;
+
+  $sql = "SELECT fullname FROM accounts WHERE email = :email;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["email" => $email]);
+
+  return $stmt->fetchColumn();
 }

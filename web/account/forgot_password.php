@@ -1,10 +1,40 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
+require_once(dirname(dirname(__DIR__)) . "/utils/mail.util.php");
 
 $title = "Forgot password";
 $page = "forgot_password";
+$error_code = null;
 $error_message = "";
+
+if (isset($_POST["send_email_btn"])) {
+  extract($_POST, EXTR_PREFIX_ALL, 'frompost');
+
+  if (is_email_exists($frompost_email)) {
+    $token_info = create_token($frompost_email);
+    $receiver = [
+      "name" => get_fullname_by_email($frompost_email),
+      "email" => $frompost_email
+    ];
+    $subject = "[leanhtai01-ecommerce] Reset password";
+    $content = "<p>Please click on the following link to reset password:</p>"
+      . "<p>$host_url" . "reset_password.php?email=" . $token_info["email"]
+      . "&token=" . $token_info["token"] . "</p>"
+      . "<p>Expire date: " . $token_info["expire_date"] . "</p>";
+
+    if (sendmail($receiver, $subject, $content)) {
+      $error_code = 0;
+      $error_message = "Reset link sent!";
+    } else {
+      $error_code = 1;
+      $error_message = "Try again later!";
+    }
+  } else {
+    $error_code = 1;
+    $error_message = "The email is not exists!";
+  }
+}
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
@@ -14,8 +44,8 @@ $error_message = "";
     <h1 class="mt-4">Forgot password</h1>
 
     <!-- Display error message -->
-    <?php if ($error_message) : ?>
-      <div class="alert alert-danger" role="alert">
+    <?php if (isset($error_code)) : ?>
+      <div class="alert <?php echo $error_code == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
         <?php echo $error_message; ?>
       </div>
     <?php endif; ?>
