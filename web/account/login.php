@@ -48,6 +48,9 @@ if (isset($_POST["login_btn"])) {
       <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
       <label for="password">Password</label>
     </div>
+    <div class="mt-4">
+      <a href="<?php echo $host_url ?>account/forgot_password.php" class="link-primary">Forgot password?</a>
+    </div>
     <div class="d-grid gap-2 mt-4">
       <button class="btn btn-primary btn-lg" name="login_btn" type="submit">Login</button>
     </div>
