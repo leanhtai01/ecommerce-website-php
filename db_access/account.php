@@ -156,3 +156,30 @@ function get_fullname_by_email($email)
 
   return $stmt->fetchColumn();
 }
+
+/**
+ * Check whether token is valid
+ *
+ * @param array $token_info Token's information (email, token)
+ *
+ * @return bool Return true if token is valid, false otherwise
+ */
+function is_valid_token($token_info)
+{
+  $is_valid = false;
+  
+  global $pdo;
+
+  $sql = "SELECT expire_date FROM tokens "
+       . "WHERE email = :email AND token = :token;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($token_info);
+
+  if ($expire_date = $stmt->fetchColumn()) {
+    if (strtotime($expire_date) > time()) {
+      $is_valid = true;
+    }
+  }
+
+  return $is_valid;
+}
