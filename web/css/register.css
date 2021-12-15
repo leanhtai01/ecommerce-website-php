@@ -1,0 +1,10 @@
+/* File: register.css
+   Style register.php
+   Author: 1760169 - Le Anh Tai
+   Email: leanhtai01@gmail.com
+   GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce */
+
+.register-form {
+    max-width: 700px;
+    margin: auto;
+}

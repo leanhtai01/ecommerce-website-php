@@ -8,6 +8,34 @@ $page = "register";
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
-<h1>This is register page!</h1>
+<div class="text-center register-form">
+  <form class="row g-3" action="" method="post">
+    <h1 class="mt-4">Register</h1>
+
+    <div class="col-md-6 form-floating">
+      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required autofocus>
+      <label for="email">Email</label>
+    </div>
+    <div class="col-md-6 form-floating">
+      <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+      <label for="password">Password</label>
+    </div>
+    <div class="col-12 form-floating">
+      <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone number" required>
+      <label for="phone_number">Phone number</label>
+    </div>
+    <div class="col-12 form-floating">
+      <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full name" required>
+      <label for="fullname">Full name</label>
+    </div>
+    <div class="col-12 form-floating">
+      <input type="text" class="form-control" name="address" id="address" placeholder="Address" required>
+      <label for="address">Address</label>
+    </div>
+    <div class="col-12 d-grid gap-2 mt-4">
+      <button class="btn btn-primary btn-lg" name="register_btn" type="submit">Register</button>
+    </div>
+  </form>
+</div>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/footer.php") ?>
