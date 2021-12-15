@@ -29,8 +29,8 @@ if (isset($_POST["login_btn"])) {
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
-<div class="text-center">
-  <form class="login-form" action="" method="post">
+<div class="text-center login-form">
+  <form action="" method="post">
     <h1 class="mt-4">Login</h1>
 
     <!-- Display error message -->
