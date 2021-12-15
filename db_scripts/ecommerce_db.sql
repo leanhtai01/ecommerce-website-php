@@ -16,6 +16,7 @@ FLUSH PRIVILEGES;
 
 USE ecommerce_db;
 
+DROP TABLE IF EXISTS accounts;
 CREATE TABLE accounts (
   id INT NOT NULL AUTO_INCREMENT,
   fullname VARCHAR(100) NOT NULL,
@@ -29,6 +30,7 @@ CREATE TABLE accounts (
   CONSTRAINT unq_users_phone_number UNIQUE (phone_number)
 );
 
+DROP TABLE IF EXISTS roles;
 CREATE TABLE roles (
   id INT NOT NULL,
   role_name VARCHAR(50) NOT NULL,
@@ -42,6 +44,7 @@ VALUES (0, 'admin', 'Administrator'),
        (1, 'user', 'Registered user'),
        (2, 'guest', 'Unregistered user');
 
+DROP TABLE IF EXISTS tokens;
 CREATE TABLE tokens (
   id INT NOT NULL AUTO_INCREMENT,
   email VARCHAR(100) NOT NULL,
