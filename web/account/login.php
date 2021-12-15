@@ -14,7 +14,13 @@ if (isset($_POST["login_btn"])) {
   if ($account_info) {
     $_SESSION["account_info"] = $account_info;
     $_SESSION["role_id"] = $account_info["role_id"];
-    header("Location: " . $host_url . "index.php");
+
+    // redirect user to suitable location
+    if ($_SESSION["role_id"] == 0) {
+      header("Location: " . $host_url . "admin/index.php");
+    } elseif ($_SESSION) {
+      header("Location: " . $host_url . "index.php");
+    }
   } else {
     $error = "Invalid email or password!";
   }
