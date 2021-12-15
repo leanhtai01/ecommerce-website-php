@@ -25,9 +25,13 @@ if (isset($fromget_email) && isset($fromget_token)) {
         $error_code = 1;
         $error_message = "Two password must be the same!";
       } else {
-        change_password($fromget_email, $frompost_password_1);
-        $error_code = 0;
-        $error_message = "Password changed!";
+        if (change_password($fromget_email, $frompost_password_1)) {
+          $error_code = 0;
+          $error_message = "Password changed!";
+        } else {
+          $error_code = 1;
+          $error_code = "Something went wrong! Try again later!";
+        }
       }
     }
   } else {

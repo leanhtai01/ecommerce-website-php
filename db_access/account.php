@@ -183,3 +183,26 @@ function is_valid_token($token_info)
 
   return $is_valid;
 }
+
+/**
+ * Change account's password
+ *
+ * @param string $email Email address
+ *
+ * @param string $new_password New password
+ *
+ * @return bool Return true on success change password, false otherwise
+ */
+function change_password($email, $new_password)
+{
+  global $pdo;
+
+  $sql = "UPDATE accounts SET password = :password WHERE email = :email;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "email" => $email,
+    "password" => password_hash($new_password, PASSWORD_DEFAULT)
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
