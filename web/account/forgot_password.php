@@ -19,7 +19,7 @@ if (isset($_POST["send_email_btn"])) {
     ];
     $subject = "[leanhtai01-ecommerce] Reset password";
     $content = "<p>Please click on the following link to reset password:</p>"
-      . "<p>$host_url" . "reset_password.php?email=" . $token_info["email"]
+      . "<p>$host_url" . "account/reset_password.php?email=" . $token_info["email"]
       . "&token=" . $token_info["token"] . "</p>"
       . "<p>Expire date: " . $token_info["expire_date"] . "</p>";
 
