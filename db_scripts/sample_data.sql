@@ -8,6 +8,14 @@ USE ecommerce_db;
 INSERT INTO accounts (fullname, email, password, phone_number, address, role_id)
 VALUES
 (
+  'Administrator',
+  'admin@gmail.com',
+  '$2y$10$U9QcNd2ZwGTGZJaGdkOa8eddzpo5b5LCf.8.rj73lyDNxS4Ca1wAe',
+  '0123123123',
+  'Hồ Chí Minh',
+  0
+),
+(
   'Lê Anh Tài',
   'leanhtai01@gmail.com',
   '$2y$10$T53Iga0pUToao7ntMk9WnuKGpYLNW2/HW3AVklyctZ939v90KuWni',
