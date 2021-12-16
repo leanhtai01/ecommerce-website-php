@@ -23,6 +23,30 @@ if (!$personal_info = get_personal_info($_SESSION["account_info"]["id"])) {
 if (isset($_POST["cancel_btn"])) {
   header("Location: " . $host_url . "/index.php");
 }
+
+// update personal's info if Update is pressed
+if (isset($_POST["update_btn"])) {
+  // create new personal's info from post data
+  extract($_POST, EXTR_PREFIX_ALL, 'frompost');
+  $personal_info = [
+    "id" => $_SESSION["account_info"]["id"],
+    "fullname" => $frompost_fullname,
+    "email" => $frompost_email,
+    "phone_number" => $frompost_phone_number,
+    "address" => $frompost_address
+  ];
+  
+  if (update_personal_info($personal_info)) {
+    // update display name
+    $_SESSION["account_info"]["fullname"] = $personal_info["fullname"];
+
+    $error_code = 0;
+    $error_message = "Your personal's information is successfully updated!";
+  } else {
+    $error_code = 1;
+    $error_message = "Something went wrong! Try again later!";
+  }
+}
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
