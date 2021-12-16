@@ -238,9 +238,33 @@ function get_personal_info($account_id)
   global $pdo;
 
   $sql = "SELECT fullname, email, phone_number, address FROM accounts "
-       . "WHERE id = :id;";
+    . "WHERE id = :id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["id" => $account_id]);
 
   return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Update personal's info (id, fullname, email, phone_number, address)
+ *
+ * @param array $personal_info personal's info (id, fullname, email, 
+ * phone_number, address)
+ *
+ * @return bool Return true if success change personal's info, false otherwise
+ */
+function update_personal_info($personal_info)
+{
+  global $pdo;
+
+  $sql = "UPDATE accounts "
+       . "SET fullname = :fullname, "
+       . "email = :email, "
+       . "phone_number = :phone_number, "
+       . "address = :address "
+       . "WHERE id = :id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($personal_info);
+
+  return $stmt->rowCount() > 0;
 }
