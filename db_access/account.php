@@ -206,3 +206,21 @@ function change_password($email, $new_password)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Delete token
+ *
+ * @param array $token_info Token's information (email, token)
+ *
+ * @return bool Return true if delete success, false otherwise
+ */
+function delete_token($token_info)
+{
+  global $pdo;
+
+  $sql = "DELETE FROM tokens WHERE email = :email AND token = :token;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($token_info);
+
+  return $stmt->rowCount() > 0;
+}
