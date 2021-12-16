@@ -18,6 +18,11 @@ if ($_SESSION["role_id"] == 0) {
 if (!$personal_info = get_personal_info($_SESSION["account_info"]["id"])) {
   header("Location: " . $host_url . "/account/login.php");
 }
+
+// redirect user to homepage if they Cancel is pressed
+if (isset($_POST["cancel_btn"])) {
+  header("Location: " . $host_url . "/index.php");
+}
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
@@ -52,7 +57,7 @@ if (!$personal_info = get_personal_info($_SESSION["account_info"]["id"])) {
     <div class="col-md-12 mt-4">
       <button class="btn btn-primary btn-lg me-5" name="update_btn" type="submit">Update</button>
       <button class="btn btn-danger btn-lg ms-5" name="cancel_btn" type="submit">Cancel</button>
-    </div>    
+    </div>
   </form>
 </div>
 
