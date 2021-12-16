@@ -104,11 +104,11 @@ function is_email_exists($email)
 function is_phone_number_exists($phone_number)
 {
   global $pdo;
-  $sql = "SELECT COUNT(*) FROM accounts WHERE phone_number = :phone_number;";
+  $sql = "SELECT * FROM accounts WHERE phone_number = :phone_number;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["phone_number" => $phone_number]);
 
-  return $stmt->fetchColumn() > 0;
+  return $stmt->rowCount() > 0;
 }
 
 /**
