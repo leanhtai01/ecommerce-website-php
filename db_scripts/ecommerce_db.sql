@@ -25,6 +25,7 @@ CREATE TABLE accounts (
   phone_number VARCHAR(20) NOT NULL,
   address VARCHAR(255) NOT NULL,
   role_id INT NOT NULL,
+  is_verified TINYINT NOT NULL,
   CONSTRAINT pk_users PRIMARY KEY (id),
   CONSTRAINT unq_users_email UNIQUE (email),
   CONSTRAINT unq_users_phone_number UNIQUE (phone_number)

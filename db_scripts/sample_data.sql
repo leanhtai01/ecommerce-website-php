@@ -5,7 +5,16 @@
 -- GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce
 USE ecommerce_db;
 
-INSERT INTO accounts (fullname, email, password, phone_number, address, role_id)
+INSERT INTO accounts
+(
+  fullname,
+  email,
+  password,
+  phone_number,
+  address,
+  role_id,
+  is_verified
+)
 VALUES
 (
   'Administrator',
@@ -13,7 +22,8 @@ VALUES
   '$2y$10$U9QcNd2ZwGTGZJaGdkOa8eddzpo5b5LCf.8.rj73lyDNxS4Ca1wAe',
   '0123123123',
   'Hồ Chí Minh',
-  0
+  0,
+  1
 ),
 (
   'Lê Anh Tài',
@@ -21,5 +31,6 @@ VALUES
   '$2y$10$T53Iga0pUToao7ntMk9WnuKGpYLNW2/HW3AVklyctZ939v90KuWni',
   '0357011672',
   'Bình Phước',
-  1
+  1,
+  0
 );
