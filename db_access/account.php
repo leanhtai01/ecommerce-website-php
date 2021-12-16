@@ -361,3 +361,21 @@ function send_account_verify_url($fullname, $email)
 
   return sendmail($receiver, $subject, $content);
 }
+
+/**
+ * Set account to verified state
+ *
+ * @param string $email Account's email
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function set_account_to_verified($email)
+{
+  global $pdo;
+
+  $sql = "UPDATE accounts SET is_verified = 1 WHERE email = :email;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["email" => $email]);
+
+  return $stmt->rowCount() > 0;
+}
