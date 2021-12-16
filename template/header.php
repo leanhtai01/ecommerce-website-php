@@ -47,7 +47,7 @@
                   <?php echo $_SESSION["account_info"]["fullname"] ?>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="<?php echo $host_url; ?>/account/index.php">Profile settings</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li>
                     <hr class="dropdown-divider">
