@@ -277,7 +277,7 @@ function update_personal_info($personal_info)
   $stmt = $pdo->prepare($sql);
   $stmt->execute($personal_info);
 
-  return $stmt->rowCount() > 0;
+  return $stmt->rowCount() > 0 ? 0 : false;
 }
 
 /**

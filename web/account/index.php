@@ -35,13 +35,20 @@ if (isset($_POST["update_btn"])) {
     "phone_number" => $frompost_phone_number,
     "address" => $frompost_address
   ];
+
+  $error_code = update_personal_info($personal_info);
   
-  if (update_personal_info($personal_info)) {
+  if ($error_code == 0) {
     // update display name
     $_SESSION["account_info"]["fullname"] = $personal_info["fullname"];
 
-    $error_code = 0;
     $error_message = "Your personal's information is successfully updated!";
+  } elseif ($error_code == 1) {
+    $error_code = 1;
+    $error_message = "You can't use that email!";
+  } elseif ($error_code == 2) {
+    $error_code = 2;
+    $error_message = "You can't use that phone number!";
   } else {
     $error_code = 1;
     $error_message = "Something went wrong! Try again later!";
