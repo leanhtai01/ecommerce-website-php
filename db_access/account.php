@@ -13,31 +13,38 @@ require_once(dirname(__DIR__) . "/conf/db.conf.php");
  *
  * @param string $password Password.
  *
- * @return array|false If the login is valid, account's info is returned. If
- * the login is invalid, false is returned.
+ * @return array|0|false
+ * If the login is valid, account's info is returned.
+ * If account is not verified, 0 is returned.
+ * If the login is invalid, false is returned.
  */
 function is_valid_login($email, $password)
 {
   global $pdo;
 
   // try to get account's info using email
-  $sql = "SELECT id, fullname, password, role_id FROM accounts "
+  $sql = "SELECT id, fullname, password, role_id, is_verified FROM accounts "
     . "WHERE email = :email;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["email" => $email]);
   $account_info = $stmt->fetch(PDO::FETCH_ASSOC);
 
   // if account with that email exist, verify password
-  if ($account_info) {
-    if (password_verify($password, $account_info["password"])) {
+  if (is_array($account_info)) {
+    if ($account_info["is_verified"] == 0) {
+      return 0;
+    } elseif (password_verify($password, $account_info["password"])) {
       // not return the password
       unset($account_info["password"]);
 
+      // not return is_verified status
+      unset($account_info["is_verified"]);
+
       return $account_info;
-    } else {
-      return false;
     }
   }
+
+  return false;
 }
 
 /**
@@ -263,8 +270,10 @@ function update_personal_info($personal_info)
     return 1;
   }
 
-  if (is_new_phone_number_exists($personal_info["phone_number"],
-                                 $personal_info["id"])) {
+  if (is_new_phone_number_exists(
+    $personal_info["phone_number"],
+    $personal_info["id"]
+  )) {
     return 2;
   }
 
@@ -315,7 +324,7 @@ function is_new_phone_number_exists($phone_number, $account_id)
 {
   global $pdo;
   $sql = "SELECT * FROM accounts "
-       . "WHERE phone_number = :phone_number AND id != :id;";
+    . "WHERE phone_number = :phone_number AND id != :id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
     "phone_number" => $phone_number,

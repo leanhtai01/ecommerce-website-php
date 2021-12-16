@@ -11,7 +11,7 @@ if (isset($_POST["login_btn"])) {
 
   $account_info = is_valid_login($frompost_email, $frompost_password);
 
-  if ($account_info) {
+  if (is_array($account_info)) {
     $_SESSION["account_info"] = $account_info;
     $_SESSION["role_id"] = $account_info["role_id"];
 
@@ -21,8 +21,10 @@ if (isset($_POST["login_btn"])) {
     } elseif ($_SESSION) {
       header("Location: " . $host_url . "/index.php");
     }
-  } else {
+  } elseif ($account_info === false) {
     $error = "Invalid email or password!";
+  } elseif ($account_info === 0) {
+    $error = "Email is not verified! Please check your email";
   }
 }
 ?>
