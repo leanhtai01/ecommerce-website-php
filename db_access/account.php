@@ -258,13 +258,35 @@ function update_personal_info($personal_info)
   global $pdo;
 
   $sql = "UPDATE accounts "
-       . "SET fullname = :fullname, "
-       . "email = :email, "
-       . "phone_number = :phone_number, "
-       . "address = :address "
-       . "WHERE id = :id";
+    . "SET fullname = :fullname, "
+    . "email = :email, "
+    . "phone_number = :phone_number, "
+    . "address = :address "
+    . "WHERE id = :id";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($personal_info);
+
+  return $stmt->rowCount() > 0;
+}
+
+/**
+ * Check whether email already exists (ignore account with specific id)
+ *
+ * @param string $email Account's email address
+ *
+ * @param int $account_id Account's id
+ *
+ * @return bool Return true if email exists, false otherwise
+ */
+function is_new_email_exists($email, $account_id)
+{
+  global $pdo;
+  $sql = "SELECT * FROM accounts WHERE email = :email AND id != :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "email" => $email,
+    "id" => $account_id
+  ]);
 
   return $stmt->rowCount() > 0;
 }
