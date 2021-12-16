@@ -4,7 +4,7 @@ require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
 $title = "Register";
 $page = "register";
-$error_code = 0;
+$error_code = null;
 $error_message = "";
 
 if (isset($_POST["register_btn"])) {
@@ -24,7 +24,10 @@ if (isset($_POST["register_btn"])) {
   $error_code = add_account($account_info);
 
   if ($error_code == 0) { // add success
-    header("Location: " . $host_url . "/account/login.php");
+    // send verify url to registered email
+    send_account_verify_url($account_info["fullname"], $account_info["email"]);
+
+    $error_message = "Check your email address to verify account!";
   } elseif ($error_code == 1) {
     $error_message = "Email already exists!";
   } elseif ($error_code == 2) {
@@ -40,8 +43,8 @@ if (isset($_POST["register_btn"])) {
     <h1 class="mt-4">Register</h1>
 
     <!-- Display error message -->
-    <?php if ($error_code != 0) : ?>
-      <div class="alert alert-danger" role="alert">
+    <?php if (isset($error_code)) : ?>
+      <div class="alert <?php echo $error_code == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
         <?php echo $error_message; ?>
       </div>
     <?php endif; ?>

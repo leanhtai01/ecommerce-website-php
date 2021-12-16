@@ -5,6 +5,7 @@
 // Email: leanhtai01@gmail.com
 // GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce
 require_once(dirname(__DIR__) . "/conf/db.conf.php");
+require_once(dirname(__DIR__) . "/utils/mail.util.php");
 
 /**
  * Check whether login is valid.
@@ -332,4 +333,22 @@ function is_new_phone_number_exists($phone_number, $account_id)
   ]);
 
   return $stmt->rowCount() > 0;
+}
+
+function send_account_verify_url($fullname, $email)
+{
+  $host_url = getenv("HOST_URL");
+  $token_info = create_token($email);
+  $receiver = [
+    "name" => $fullname,
+    "email" => $email
+  ];
+  $subject = "[leanhtai01-ecommerce] Verify account";
+  $content = "<p>Please click on the following link to verify your account:</p>"
+    . "<p>$host_url" . "/account/verify_account.php?email="
+    . $token_info["email"]
+    . "&token=" . $token_info["token"] . "</p>"
+    . "<p>Expire date: " . $token_info["expire_date"] . "</p>";
+
+  return sendmail($receiver, $subject, $content);
 }
