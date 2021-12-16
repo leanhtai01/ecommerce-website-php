@@ -49,9 +49,10 @@ if (!$personal_info = get_personal_info($_SESSION["account_info"]["id"])) {
       <input type="text" class="form-control" name="address" id="address" placeholder="Address" value="<?php echo $personal_info["address"]; ?>" required>
       <label for="address">Address</label>
     </div>
-    <div class="col-12 d-grid gap-2 mt-4">
-      <button class="btn btn-primary btn-lg" name="update_btn" type="submit">Update</button>
-    </div>
+    <div class="col-md-12 mt-4">
+      <button class="btn btn-primary btn-lg me-5" name="update_btn" type="submit">Update</button>
+      <button class="btn btn-danger btn-lg ms-5" name="cancel_btn" type="submit">Cancel</button>
+    </div>    
   </form>
 </div>
 
