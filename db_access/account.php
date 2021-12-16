@@ -251,11 +251,22 @@ function get_personal_info($account_id)
  * @param array $personal_info personal's info (id, fullname, email, 
  * phone_number, address)
  *
- * @return bool Return true if success change personal's info, false otherwise
+ * @return true|1|2|false Return true if success change personal's info, 1 if
+ * new email already exists, 2 if new phone_number already exists, false
+ * otherwise
  */
 function update_personal_info($personal_info)
 {
   global $pdo;
+
+  if (is_new_email_exists($personal_info["email"], $personal_info["id"])) {
+    return 1;
+  }
+
+  if (is_new_phone_number_exists($personal_info["phone_number"],
+                                 $personal_info["id"])) {
+    return 2;
+  }
 
   $sql = "UPDATE accounts "
     . "SET fullname = :fullname, "
