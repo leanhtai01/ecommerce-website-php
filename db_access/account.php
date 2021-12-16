@@ -87,11 +87,11 @@ function add_account($account_info)
 function is_email_exists($email)
 {
   global $pdo;
-  $sql = "SELECT COUNT(*) FROM accounts WHERE email = :email;";
+  $sql = "SELECT * FROM accounts WHERE email = :email;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["email" => $email]);
 
-  return $stmt->fetchColumn() > 0;
+  return $stmt->rowCount() > 0;
 }
 
 /**
