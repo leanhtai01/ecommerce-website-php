@@ -17,7 +17,8 @@ if (isset($_POST["register_btn"])) {
     "password" => $frompost_password,
     "phone_number" => $frompost_phone_number,
     "address" => $frompost_address,
-    "role_id" => 1 // can only register as user
+    "role_id" => 1, // can only register as user
+    "is_verified" => 0 // new account is unverified by default
   ];
 
   $error_code = add_account($account_info);
