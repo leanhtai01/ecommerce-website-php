@@ -75,9 +75,9 @@ function add_account($account_info)
 
   // add account
   $sql = "INSERT INTO accounts "
-    . "(fullname, email, password, phone_number, address, role_id) "
+    . "(fullname, email, password, phone_number, address, role_id, is_verified) "
     . "VALUES "
-    . "(:fullname, :email, :password, :phone_number, :address, :role_id);";
+    . "(:fullname, :email, :password, :phone_number, :address, :role_id, :is_verified);";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($account_info);
 
