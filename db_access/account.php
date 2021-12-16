@@ -132,7 +132,7 @@ function create_token($email)
   ];
 
   $sql = "INSERT INTO tokens (email, token, expire_date) "
-       . "VALUES (:email, :token, :expire_date);";
+    . "VALUES (:email, :token, :expire_date);";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($token_info);
 
@@ -167,11 +167,11 @@ function get_fullname_by_email($email)
 function is_valid_token($token_info)
 {
   $is_valid = false;
-  
+
   global $pdo;
 
   $sql = "SELECT expire_date FROM tokens "
-       . "WHERE email = :email AND token = :token;";
+    . "WHERE email = :email AND token = :token;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($token_info);
 
@@ -223,4 +223,24 @@ function delete_token($token_info)
   $stmt->execute($token_info);
 
   return $stmt->rowCount() > 0;
+}
+
+/**
+ * Get personal's info (fullname, email, phone_number, address)
+ *
+ * @param int $account_id
+ *
+ * @return array|false Return personal's info (fullname, email, phone_number,
+ * address) in success. Return false if account_id is not found.
+ */
+function get_personal_info($account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT fullname, email, phone_number, address FROM accounts "
+       . "WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $account_id]);
+
+  return $stmt->fetch(PDO::FETCH_ASSOC);
 }
