@@ -23,7 +23,7 @@ if (isset($_POST["register_btn"])) {
   $error_code = add_account($account_info);
 
   if ($error_code == 0) { // add success
-    header("Location: " . $host_url . "account/login.php");
+    header("Location: " . $host_url . "/account/login.php");
   } elseif ($error_code == 1) {
     $error_message = "Email already exists!";
   } elseif ($error_code == 2) {

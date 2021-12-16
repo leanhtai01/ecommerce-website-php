@@ -17,9 +17,9 @@ if (isset($_POST["login_btn"])) {
 
     // redirect user to suitable location
     if ($_SESSION["role_id"] == 0) {
-      header("Location: " . $host_url . "admin/index.php");
+      header("Location: " . $host_url . "/admin/index.php");
     } elseif ($_SESSION) {
-      header("Location: " . $host_url . "index.php");
+      header("Location: " . $host_url . "/index.php");
     }
   } else {
     $error = "Invalid email or password!";
@@ -49,7 +49,7 @@ if (isset($_POST["login_btn"])) {
       <label for="password">Password</label>
     </div>
     <div class="mt-4">
-      <a href="<?php echo $host_url ?>account/forgot_password.php" class="link-primary">Forgot password?</a>
+      <a href="<?php echo $host_url ?>/account/forgot_password.php" class="link-primary">Forgot password?</a>
     </div>
     <div class="d-grid gap-2 mt-4">
       <button class="btn btn-primary btn-lg" name="login_btn" type="submit">Login</button>
