@@ -290,3 +290,26 @@ function is_new_email_exists($email, $account_id)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Check whether phone_number already exists (ignore account with specific id)
+ *
+ * @param string $phone_number Account's phone number
+ *
+ * @param int $account_id Account's id
+ *
+ * @return bool Return true if phone_number exists, false otherwise
+ */
+function is_new_phone_number_exists($phone_number, $account_id)
+{
+  global $pdo;
+  $sql = "SELECT * FROM accounts "
+       . "WHERE phone_number = :phone_number AND id != :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "phone_number" => $phone_number,
+    "id" => $account_id
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
