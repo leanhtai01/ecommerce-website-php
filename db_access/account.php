@@ -335,6 +335,15 @@ function is_new_phone_number_exists($phone_number, $account_id)
   return $stmt->rowCount() > 0;
 }
 
+/**
+ * Send account verify url
+ *
+ * @param string $fullname User's fullname
+ *
+ * @param string $email User's email
+ *
+ * @return bool Return true if success send email, false otherwise
+ */
 function send_account_verify_url($fullname, $email)
 {
   $host_url = getenv("HOST_URL");
