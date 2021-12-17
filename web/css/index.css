@@ -1,0 +1,43 @@
+.product-grid {
+    padding: 0;
+    margin: 0;
+    font-family: "Nunito Sans";
+}
+
+.product-img {
+    height: 230px;
+}
+
+.product-card {
+    padding-top: 10px;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.bi {
+    text-align: right;
+    padding-right: 10px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.product-name {
+    padding-top: 15px;
+}
+
+.btn-add-to-cart {
+    padding: 5px 25px;
+    margin-top: 10px;
+}
+
+@media(max-width: 768px) {
+    img.product-img {
+        height: 100%;
+    }
+}
+
+@media(max-width: 575px) {
+    .product-grid {
+        width: 90%;
+    }
+}
