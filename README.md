@@ -1,3 +1,3 @@
 # leanhtai01-ecommerce
-Remote host: https://leanhtai01-ecommerce.herokuapp.com/ <br>
+Remote host: http://www.leanhtai01.xyz <br>
 GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce <br>
