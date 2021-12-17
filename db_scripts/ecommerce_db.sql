@@ -53,3 +53,48 @@ CREATE TABLE tokens (
   expire_date DATETIME NOT NULL,
   CONSTRAINT pk_tokens PRIMARY KEY (id)
 );
+
+DROP TABLE IF EXISTS favorites;
+CREATE TABLE favorites (
+  account_id INT NOT NULL,
+  product_id INT NOT NULL,
+  CONSTRAINT pk_favorites PRIMARY KEY (account_id, product_id)
+);
+
+DROP TABLE IF EXISTS products;
+CREATE TABLE products (
+  id INT NOT NULL AUTO_INCREMENT,
+  product_name VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  price DECIMAL(15, 2) NOT NULL,
+  quantity_in_stock INT NOT NULL,
+  create_at DATETIME NOT NULL,
+  CONSTRAINT pk_products PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS product_images;
+CREATE TABLE product_images (
+  id INT NOT NULL AUTO_INCREMENT,
+  product_id INT NOT NULL,
+  src TEXT NOT NULL,
+  CONSTRAINT pk_product_images PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders (
+  id INT NOT NULL AUTO_INCREMENT,
+  account_id INT NOT NULL,
+  order_date DATETIME NOT NULL,
+  ship_name VARCHAR(100),
+  ship_phone_number VARCHAR(20),
+  ship_address VARCHAR(255),
+  CONSTRAINT pk_orders PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS order_details;
+CREATE TABLE order_details (
+  order_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  CONSTRAINT pk_order_details PRIMARY KEY (order_id, product_id)
+);
