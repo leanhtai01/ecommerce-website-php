@@ -15,20 +15,21 @@ if (isset($_POST["resend_btn"])) {
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
+<div class="text-center">
+  <!-- Display error message -->
+  <?php if (isset($_SESSION["error_code"])) : ?>
+    <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
+      <?php
+      echo $_SESSION["error_message"];
+      unset($_SESSION["error_code"]);
+      unset($_SESSION["error_message"]);
+      ?>
+    </div>
+  <?php endif; ?>
+</div>
 <div class="text-center register-form">
   <form action="" method="post">
     <h1 class="mt-4">Resend validation email</h1>
-
-    <!-- Display error message -->
-    <?php if (isset($_SESSION["error_code"])) : ?>
-      <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
-        <?php echo $_SESSION["error_message"]; ?>
-        <?php
-        unset($_SESSION["error_code"]);
-        unset($_SESSION["error_message"]);
-        ?>
-      </div>
-    <?php endif; ?>
 
     <div class="form-floating mb-3 mt-4">
       <input type="email" class="form-control" name="email" id="email" placeholder="Registered email" required autofocus>
