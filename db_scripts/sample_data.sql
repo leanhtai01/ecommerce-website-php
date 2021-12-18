@@ -123,5 +123,76 @@ VALUES
   'Nha Trang',
   1,
   1
+),
+(
+  'Vi Tiểu Bảo',
+  'vitieubao@yahoo.com',
+  '$2y$10$1WLifpk98R5iiqGsoZQ/Zu.R6Uua1vfz2ayW0.0tmUQ9AlykcBmXO',
+  '0382876343',
+  'Quảng Nam',
+  1,
+  1
+),
+(
+  'John Doe',
+  'johndoe@gmail.com',
+  '$2y$10$XTn/WW.KK89pBKpVYKz7uO45PSsFrWd4pPgHtG4KXYa1e2uwaY85m',
+  '01234765234',
+  'New York',
+  1,
+  1
+),
+(
+  'Tống Giang',
+  'tonggiang@hotmail.com',
+  '$2y$10$BGUICuzYHtUeoCYu2Osi0u.I7CGWjjO./4D245gweOhlBcEr0jLTa',
+  '0371873923',
+  'Lương Sơn',
+  1,
+  1
+),
+(
+  'Lâm Xung',
+  'lamxung@gmail.com',
+  '$2y$10$lwIjL/LZFus6EUC8Ez1j1.ArvvW2cvqMobyb/y8xfAgBnqZpI.VFa',
+  '0282183823',
+  'Dương Châu',
+  1,
+  1
+),
+(
+  'Lâm Đại Ngọc',
+  'lamdaingoc@outlook.com',
+  '$2y$10$XhPLwqwey11MVaxqekcS8.eP/77QOkfTbc492ts3YpVpQqe7dc1kG',
+  '0123847234',
+  'Đài Loan',
+  1,
+  1
+),
+(
+  'Giả Bảo Ngọc',
+  'giabaongoc@gmail.com',
+  '$2y$10$GrhbXZoLeSoAos/82j8r5Oev583ZIdugLJUzFgiD8qU4SdoNBW51i',
+  '0213287271',
+  'Bắc Kinh',
+  1,
+  1
+),
+(
+  'Yamaha Suzuki',
+  'yamahasuzuki@gmail.com',
+  '$2y$10$/YxPQa6kqhhqjutgRMqF1.E9G6q81.YihbpxcS89vQuWZohEDD4k2',
+  '0231234876',
+  'Tokyo',
+  1,
+  1
+),
+(
+  'Mr. Bean',
+  'mrbean@outlook.com',
+  '$2y$10$8kT2OwyNRwPu8Y.PbI1jO..06hBxr8l.Gqe.LgMfC6tpDyLRdH/Se',
+  '0123428122',
+  'London',
+  1,
+  1
 );
-
