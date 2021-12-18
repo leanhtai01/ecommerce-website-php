@@ -24,7 +24,9 @@ if (isset($_POST["login_btn"])) {
   } elseif ($account_info === false) {
     $error = "Invalid email or password!";
   } elseif ($account_info === 0) {
-    $error = "Email is not verified! Please check your email";
+    $_SESSION["error_code"] = 1;
+    $_SESSION["error_message"] = "Email is not verified! Please check your email or resend validation email!";
+    header("Location: " . $host_url . "/account/resend_validation_email.php");
   }
 }
 ?>
