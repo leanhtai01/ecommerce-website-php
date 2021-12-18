@@ -33,4 +33,67 @@ VALUES
   'Bình Phước',
   1,
   0
+),
+(
+  'Nguyễn Văn Linh',
+  'nguyenvanlinh@gmail.com',
+  '$2y$10$tHcsXUZjQcGbF.H2Fm67muohyCVaiRBkSq3wsifQuRaOvb2UwjEjO',
+  '0823712465',
+  'Hà Nội',
+  1,
+  1
+),
+(
+  'Trần Văn Mạnh',
+  'tranvanmanh@yahoo.com',
+  '$2y$10$E5f3qkKgIK19JluRhKvTNuyA6PbzIoSQbh1/rxbDihkMYoHDqsXHC',
+  '0978654313',
+  'Hải Phòng',
+  1,
+  1
+),
+(
+  'Lê Anh Tài',
+  'leanhtai01@yahoo.com.vn',
+  '$2y$10$maKdbibcObGgiiav0t/lSOO74JjWi8Sp.5M/XspqS4c7Sgh9cJEOa',
+  '0522491642',
+  'Thừa Thiên Huế',
+  1,
+  0
+),
+(
+  'Phan Thị Ngọc',
+  'phanthingoc@outlook.com',
+  '$2y$10$MJENqTTAIvAR2cwQ7AL0n.OaACCA9nB3E69mUA/vUD1PkAAJupac.',
+  '0237243234',
+  'Quảng Trị',
+  1,
+  1
+),
+(
+  'Võ Tòng',
+  'votong@yahoo.com.vn',
+  '$2y$10$NfFW3m3FHxNS5aGwJn/ApenQzwa47cPQvs6vCN.WImA9cHphyVDf.',
+  '0123434234',
+  'Lương Sơn',
+  1,
+  1
+),
+(
+  'Trần Văn Bình',
+  'tranvanbinh@hotmail.com',
+  '$2y$10$45fkcKhtddEZAEl25gveOujy5XAYprG2gqJZaVBcbabiXiecwJvp.',
+  '0913456789',
+  'Bến Tre',
+  1,
+  1
+),
+(
+  'Lý Văn Tèo',
+  'lyvanteo@gmail.com',
+  '$2y$10$vyD5MPabI9vi71QWaiIcLOnfDmYTBiDOT8gUwAPROme44bzX7wKzi',
+  '0987231234',
+  'Tây Ninh',
+  1,
+  1
 );
