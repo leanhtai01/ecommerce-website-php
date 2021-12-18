@@ -96,4 +96,32 @@ VALUES
   'Tây Ninh',
   1,
   1
+),
+(
+  'Nguyễn Thành Đạt',
+  'nguyenthanhdat@gmail.com',
+  '$2y$10$7669OYmUJ09FPxtHBNZm0exPk0TuTCTFmBcHYR10sBDQ57TCSs4OG',
+  '0218322123',
+  'Bắc Giang',
+  1,
+  1
+),
+(
+  'Phan Văn Đức',
+  'phanvanduc@gmail.com',
+  '$2y$10$0Zl4CEnjFNSLGhDGcn3qF.lews9SOQS4GkfJ7qj0u53phgZapyCei',
+  '0672654234',
+  'Bình Thuận',
+  1,
+  1
+),
+(
+  'Kim Dung',
+  'kimdung@gmail.com',
+  '$2y$10$ji2aJVOEe2QmSGajdzzTzuBx7v4Dpwa9ljJEhv21rgpiUpmgUjFq6',
+  '0345678765',
+  'Nha Trang',
+  1,
+  1
 );
+
