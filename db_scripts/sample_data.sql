@@ -195,4 +195,58 @@ VALUES
   'London',
   1,
   1
+),
+(
+  'Vũ Thành An',
+  'vuthanhan@gmail.com',
+  '$2y$10$X5DIW0zdm33m5wAMrqHixOMsYwYeyFQl/xi9qqO528ccacE3oCS5G',
+  '0123742642',
+  'Đà Nẵng',
+  1,
+  1
+),
+(
+  'Michael Jackson',
+  'michaeljackson@yahoo.com',
+  '$2y$10$757ZOJaojRnFRETB5VyWUOMXWsoqymFJqHEO8v7B6sCMKQYAdUjs2',
+  '0912328421',
+  'Washington DC',
+  1,
+  1
+),
+(
+  'Michael Schumacher',
+  'michaelschumacher@gmail.com',
+  '$2y$10$HbLCEGtNEOG2mVwWSeydseRHGE/g0Knok/p/pFwnksYxtV7YE3WeK',
+  '0912742123',
+  'Virginia',
+  1,
+  1
+),
+(
+  'Newton',
+  'newton@gmail.com',
+  '$2y$10$J9oQlg8eey5tNCST0G9Vme7HYUCeyqIx8HMJY47dq.kxRsyx0IBzi',
+  '0812342212',
+  'Somewhere in the Earth',
+  1,
+  1
+),
+(
+  'Vũ Văn Thành',
+  'vuvanthanh@gmail.com',
+  '$2y$10$XjL8Il2Zek3ZAkIsVWHTIutdC15hhk5o1XLmrSeOWYMTQ53OozYUO',
+  '0123421821',
+  'Hồ Chí Minh',
+  1,
+  1
+),
+(
+  'Nguyễn Thị Ngọc Như',
+  'nguyenthingocnhu@gmail.com',
+  '$2y$10$vd8JH1N8AolqcGFyVRILxeKc/BxXVL9OstP3oW6p.tZGGo5Ixpkra',
+  '0213842127',
+  'Đồng Tháp',
+  1,
+  1
 );
