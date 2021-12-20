@@ -2,6 +2,17 @@
 Remote host: http://www.leanhtai01.xyz <br>
 GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce <br>
 
+# Environment variables
+- DB_URL: MariaDB/MySQL URL
+- HOST_URL: URL to host (e.g. https://www.leanhtai01.xyz)
+- MAIL_NAME: Sender's name
+- MAIL_USERNAME: Sender's username
+- MAIL_PASSWORD: Sender's password
+- AWS_ACCESS_KEY_ID: AWS access key id
+- AWS_SECRET_ACCESS_KEY: AWS secret access key
+- S3_BUCKET: AWS S3 bucket's name
+- AWS_REGION: AWS region
+
 # References
 - Navigation bar: https://getbootstrap.com/docs/5.0/components/navbar/
 - Login form: https://getbootstrap.com/docs/5.0/forms/floating-labels/
