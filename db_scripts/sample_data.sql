@@ -5,6 +5,33 @@
 -- GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce
 USE ecommerce_db;
 
+INSERT INTO products
+(
+  category_id,
+  product_name,
+  description,
+  price,
+  quantity_in_stock,
+  create_at
+)
+VALUES
+(
+  1,
+  'Acer Nitro 5 AN515-55-53E5 Gaming Laptop',
+  'Dominate the Game: With the 10th Gen Intel Core i5-10300H processor, your Nitro 5 is packed with incredible power for all your games',
+  18269938.38,
+  50,
+  '2021-10-23 19:59:00'
+),
+(
+  1,
+  'Lenovo Chromebook Flex 3 11" Laptop',
+  'Get high performance when you need it - the Chromebook Flex 3 boots up in seconds and features easy-to-use Chrome OS, plenty of memory and storage, and so much more',
+  4596270.18,
+  37,
+  '2021-11-10 05:00:00'
+);
+
 INSERT INTO categories
 (
   category_name,
