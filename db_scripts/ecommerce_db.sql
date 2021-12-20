@@ -114,5 +114,5 @@ CREATE TABLE carts (
   account_id INT NOT NULL,
   product_id INT NOT NULL,
   quantity INT NOT NULL,
-  CONSTRAINT pk_carts PRIMARY KEY (id)
+  CONSTRAINT pk_carts PRIMARY KEY (account_id, product_id)
 );
