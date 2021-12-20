@@ -30,6 +30,22 @@ VALUES
   4596270.18,
   37,
   '2021-11-10 05:00:00'
+),
+(
+  1,
+  'Lenovo IdeaPad 3 Laptop',
+  'Powerhouse performance from AMD Ryzen 5 5500U mobile processor, 8GB DDR4 RAM, 256GB SSD storage, and AMD Radeon 7 Graphics',
+  11003770.75,
+  10,
+  '2021-12-10 18:13:45'
+),
+(
+  1,
+  'ASUS L210 MA-DB01 Ultra Thin Laptop',
+  'Efficient Intel Celeron N4020 Processor (4M Cache, up to 2.8 GHz)',
+  5274820.65,
+  24,
+  '2021-10-11 08:45:23'
 );
 
 INSERT INTO categories

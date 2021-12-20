@@ -89,7 +89,7 @@ CREATE TABLE orders (
   ship_name VARCHAR(100),
   ship_phone_number VARCHAR(20),
   ship_address VARCHAR(255),
-  status ENUM('wait', 'cancel', 'processing', 'shipping', 'complete') NOT NULL,
+  status ENUM('waiting', 'canceled', 'processing', 'shipping', 'completed') NOT NULL,
   CONSTRAINT pk_orders PRIMARY KEY (id)
 );
 
