@@ -5,6 +5,37 @@
 -- GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce
 USE ecommerce_db;
 
+INSERT INTO categories
+(
+  category_name,
+  description
+)
+VALUES
+(
+  'Computers',
+  'For PC, Laptop and Mac'
+),
+(
+  'Books',
+  'Textbooks, Self-Help, History, Novels'
+),
+(
+  'Video Games',
+  'PC, Mac, Xbox, PlayStation Games'
+),
+(
+  'Movies & TV',
+  'TV Shows, Anime, Science Fiction'
+),
+(
+  'Softwares',
+  'Software for Microsoft Windows, macOS, Linux, Android'
+),
+(
+  'Cell Phones',
+  'iPhones, Android phones, stupid phones'
+);
+
 INSERT INTO accounts
 (
   fullname,
