@@ -3,6 +3,7 @@ Remote host: http://www.leanhtai01.xyz <br>
 GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce <br>
 
 # Environment variables
+The following environment variables using getenv to read:
 - DB_URL: MariaDB/MySQL URL
 - HOST_URL: URL to host (e.g. https://www.leanhtai01.xyz)
 - MAIL_NAME: Sender's name
