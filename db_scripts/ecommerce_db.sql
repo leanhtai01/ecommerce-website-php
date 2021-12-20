@@ -64,11 +64,12 @@ CREATE TABLE favorites (
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
   id INT NOT NULL AUTO_INCREMENT,
+  category_id INT NOT NULL,
   product_name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   price DECIMAL(15, 2) NOT NULL,
   quantity_in_stock INT NOT NULL,
-  create_at DATETIME NOT NULL,
+  create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT pk_products PRIMARY KEY (id)
 );
 
@@ -88,6 +89,7 @@ CREATE TABLE orders (
   ship_name VARCHAR(100),
   ship_phone_number VARCHAR(20),
   ship_address VARCHAR(255),
+  status ENUM('wait', 'cancel', 'processing', 'shipping', 'complete') NOT NULL,
   CONSTRAINT pk_orders PRIMARY KEY (id)
 );
 
@@ -97,4 +99,20 @@ CREATE TABLE order_details (
   product_id INT NOT NULL,
   quantity INT NOT NULL,
   CONSTRAINT pk_order_details PRIMARY KEY (order_id, product_id)
+);
+
+DROP TABLE IF EXISTS categories;
+CREATE TABLE categories (
+  id INT NOT NULL AUTO_INCREMENT,
+  category_name VARCHAR(20) NOT NULL,
+  description TEXT NOT NULL,
+  CONSTRAINT pk_categories PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS carts;
+CREATE TABLE carts (
+  account_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  CONSTRAINT pk_carts PRIMARY KEY (id)
 );
