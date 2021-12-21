@@ -56,7 +56,8 @@
                   <li><a class="dropdown-item" href="<?php echo $host_url; ?>/account/index.php">Profile settings</a></li>
                   <?php if ($_SESSION["role_id"] == 0) : ?>
                     <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/product_manager.php">Product Management</a></li>
-                  <?php endif; ?>                  
+                    <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/account_manager.php">Account Management</a></li>
+                  <?php endif; ?>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
