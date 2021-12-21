@@ -50,7 +50,7 @@ $page = "add_product";
       <label for="description">Description</label>
     </div>
     <div class="col-12 mb-3">
-      <label for="product_images" class="form-label">Product's images (only accept *.jpeg file with size < 2MB)</label>
+      <label for="product_images" class="form-label">Product's images</label>
       <input class="form-control" type="file" name="product_images[]" id="product_images" multiple>
     </div>
     <div class="col-12 d-grid gap-2 mt-4">
