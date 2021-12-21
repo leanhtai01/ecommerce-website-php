@@ -379,3 +379,22 @@ function set_account_to_verified($email)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Get account's information with role user.
+ *
+ * @return array|false Return an array or false if failed.
+ */
+function get_user_accounts_info()
+{
+  global $pdo;
+
+  $sql = "SELECT id, fullname, email, phone_number, address, is_verified "
+       . "FROM accounts "
+       . "WHERE role_id = 1;";
+  
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
