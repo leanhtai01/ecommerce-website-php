@@ -22,3 +22,5 @@ The following environment variables using getenv to read:
 - Upload file to AWS S3: https://devcenter.heroku.com/articles/s3-upload-php
 - Product grid view: https://w3hubs.com/bootstrap-5-responsive-product-grid-view/?ref=morioh.com&utm_source=morioh.com
 - Product grid hover effects: https://codepen.io/Eruedraith/pen/xwQPVg
+- Pagination: https://www.positronx.io/create-pagination-in-php-with-mysql-and-bootstrap/
+- Pagination: https://getbootstrap.com/docs/5.0/components/pagination/
