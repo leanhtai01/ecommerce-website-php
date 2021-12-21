@@ -1,8 +1,11 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 
 $title = "Product Manager";
 $page = "product_manager";
+
+$products = get_product_list();
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
@@ -34,17 +37,19 @@ $page = "product_manager";
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Computers</td>
-            <td>Acer Nitro 5 AN515-55-53E5 Gaming Laptop</td>
-            <td>Dominate the Game: With the 10th Gen Intel Core i5-10300H processor, your Nitro 5 is packed with incredible power for all your games</td>
-            <td>18269938.38</td>
-            <td>50</td>
-            <td>2021-10-23 19:59:00</td>
-            <td><a class="btn btn-info" href="">Edit</a></td>
-            <td><a class="btn btn-danger" href="">Delete</a></td>
-          </tr>
+          <?php foreach ($products as $product) : ?>
+            <tr>
+              <td><?php echo $product["id"] ?></td>
+              <td><?php echo $product["category_name"] ?></td>
+              <td><?php echo $product["product_name"] ?></td>
+              <td><?php echo $product["description"] ?></td>
+              <td><?php echo $product["price"] ?></td>
+              <td><?php echo $product["quantity_in_stock"] ?></td>
+              <td><?php echo $product["create_at"] ?></td>
+              <td><a class="btn btn-info" href="">Edit</a></td>
+              <td><a class="btn btn-danger" href="">Delete</a></td>
+            </tr>
+          <?php endforeach; ?>          
         </tbody>
       </table>
     </div>
