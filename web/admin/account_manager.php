@@ -2,6 +2,12 @@
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
+if ($_SESSION["role_id"] != 0) {
+  http_response_code(404);
+  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
+  exit();
+}
+
 $title = "Account Manager";
 $page = "account_manager";
 
@@ -51,7 +57,7 @@ $accounts = get_user_accounts_info();
                   echo "Yes";
                 }
                 ?>
-              </td>        
+              </td>
               <td><a class="btn btn-info" href="">Edit</a></td>
               <td><a class="btn btn-danger" href="">Delete</a></td>
             </tr>

@@ -2,6 +2,12 @@
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 
+if ($_SESSION["role_id"] != 0) {
+  http_response_code(404);
+  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
+  exit();
+}
+
 $title = "Product Manager";
 $page = "product_manager";
 
@@ -49,7 +55,7 @@ $products = get_product_list();
               <td><a class="btn btn-info" href="">Edit</a></td>
               <td><a class="btn btn-danger" href="">Delete</a></td>
             </tr>
-          <?php endforeach; ?>          
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>
