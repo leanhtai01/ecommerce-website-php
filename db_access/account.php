@@ -392,7 +392,31 @@ function get_user_accounts_info()
   $sql = "SELECT id, fullname, email, phone_number, address, is_verified "
        . "FROM accounts "
        . "WHERE role_id = 1;";
-  
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Get only a number of account's records.
+ *
+ * @param int $offset Beginning offset.
+ *
+ * @param int $number_of_records Number of records will be retrieved.
+ *
+ * @Return array|false Return number of records or false if failed.
+ */
+function get_user_accounts_info_limit($offset, $number_of_records)
+{
+  global $pdo;
+
+  $sql = "SELECT id, fullname, email, phone_number, address, is_verified "
+       . "FROM accounts "
+       . "WHERE role_id = 1 "
+       . "LIMIT $offset, $number_of_records;";
+
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
 
