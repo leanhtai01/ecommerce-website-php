@@ -21,7 +21,7 @@ $products = get_product_list();
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-      <button class="btn btn-primary">Add product</button>
+      <a class="btn btn-primary" href="<?php echo $host_url; ?>/admin/add_product.php">Add product</a>      
     </div>
     <div class="col-md-1"></div>
   </div>
