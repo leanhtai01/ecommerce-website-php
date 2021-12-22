@@ -32,11 +32,15 @@ if (isset($_POST["add_product_btn"])) {
 
 <div class="text-center">
   <h1 class="mt-4">Add Product</h1>
-  
+
   <!-- Display error message -->
   <?php if (isset($_SESSION["error_code"])) : ?>
     <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
-      <?php echo $_SESSION["error_message"]; ?>
+      <?php
+      echo $_SESSION["error_message"];      
+      unset($_SESSION["error_code"]);
+      unset($_SESSION["error_message"]);
+      ?>
     </div>
   <?php endif; ?>
 </div>
