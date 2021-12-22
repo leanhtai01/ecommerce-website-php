@@ -66,7 +66,7 @@ function add_product_info($product_info)
  *
  * @param array $img_info Image's information (product_id, src)
  *
- * @return bool Return true on success, false otherwise
+ * @return int|false Return last insert id on success, false otherwise
  */
 function add_product_img($img_info)
 {
@@ -77,5 +77,5 @@ function add_product_img($img_info)
   $stmt = $pdo->prepare($sql);
   $stmt->execute($img_info);
 
-  return $stmt->rowCount();
+  return $stmt->rowCount() ? $pdo->lastInsertId() : false;
 }
