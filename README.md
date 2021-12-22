@@ -3,8 +3,8 @@ Remote host: http://www.leanhtai01.xyz <br>
 GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce <br>
 
 # Admin account
-Username: admin@gmail.com
-Password: 123
+Username: admin@gmail.com <br>
+Password: 123 <br>
 
 # Environment variables
 The following environment variables using getenv to read:
