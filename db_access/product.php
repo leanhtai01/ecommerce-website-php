@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__DIR__) . "/conf/db.conf.php");
+require_once(dirname(__DIR__) . "/utils/upload.util.php");
 
 /**
  * Get list of product include category's name
@@ -77,4 +78,32 @@ function add_product_img($img_info)
   $stmt->execute($img_info);
 
   return $stmt->rowCount();
+}
+
+/**
+ * Upload multiple product image to AWS S3
+ *
+ * @param array $imgs List of images to upload
+ *
+ * @param int $product_id Product's id
+ *
+ * @return mixed|null URL to uploaded files
+ */
+function upload_multiple_product_img_to_aws_s3($imgs, $product_id)
+{
+  $img_urls = [];
+  $number_of_imgs = count($imgs["name"]);
+
+  for ($i = 0; $i < $number_of_imgs; ++$i) {
+    $uploaded_img = $imgs["tmp_name"][$i];
+    $new_name = "product_" . $product_id . "_" . uniqid() . ".jpg";
+
+    // upload the image
+    $url = upload_img_to_aws_s3($uploaded_img, $new_name);
+
+    // add URL to list
+    array_push($img_urls, $url);
+  }
+
+  return $img_urls;
 }
