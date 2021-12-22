@@ -29,12 +29,12 @@ $categories = get_category_list();
     <?php endif; ?>
 
     <div class="col-12 form-floating">
-      <select class="form-select" name="category" id="category">
+      <select class="form-select" name="category_id" id="category_id">
         <?php foreach ($categories as $category) : ?>
           <option value="<?php echo $category["id"] ?>"><?php echo $category["category_name"] ?></option>
         <?php endforeach; ?>        
       </select>
-      <label for="category">Category</label>
+      <label for="category_id">Category</label>
     </div>
     <div class="col-12 form-floating">
       <input type="text" class="form-control" name="product_name" id="product_name" placeholder="Product name" required>
