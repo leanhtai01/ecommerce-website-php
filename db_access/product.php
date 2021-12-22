@@ -36,7 +36,7 @@ function get_product_list()
  * @param array $product_info Product's information (category_id, product_name,
  * description, price, quantity_in_stock)
  *
- * @return bool Return true on success, false otherwise
+ * @return int|false Return last insert id on success, false otherwise
  */
 function add_product_info($product_info)
 {
@@ -57,7 +57,7 @@ function add_product_info($product_info)
   $stmt = $pdo->prepare($sql);
   $stmt->execute($product_info);
 
-  return $stmt->rowCount();
+  return $stmt->rowCount() ? $pdo->lastInsertId() : false;
 }
 
 /**
