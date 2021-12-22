@@ -3,6 +3,7 @@ require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/category.php");
 require_once(dirname(dirname(__DIR__)) . "/utils/upload.util.php");
+require_once(dirname(dirname(__DIR__)) . "/validation/product.validation.php");
 
 if ($_SESSION["role_id"] != 0) {
   http_response_code(404);
@@ -17,13 +18,28 @@ $allow_img_types = [IMAGETYPE_JPEG];
 $categories = get_category_list();
 
 if (isset($_POST["add_product_btn"])) {
+  $product_info = extract_product_info($_POST);
+  $imgs = $_FILES["product_images"];
+
   if (!is_upload_multiple_img_success(
-    $_FILES["product_images"],
+    $imgs,
     $allow_img_types
   )) {
     $_SESSION["error_code"] = 1;
     $_SESSION["error_message"] = "Please provide at least one product's image "
       . "in JPEG format with size <= 2MB!";
+  } elseif (!is_valid_product_info($product_info)) {
+    $_SESSION["error_code"] = 1;
+    $_SESSION["error_message"] = "Invalid input!";
+  } else {
+    $product_id = add_product_info($product_info);
+    add_multiple_product_img(
+      $product_id,
+      upload_multiple_product_img_to_aws_s3($imgs, $product_id)
+    );
+
+    $_SESSION["error_code"] = 0;
+    $_SESSION["error_message"] = "Product added successfully!";
   }
 }
 ?>
@@ -37,7 +53,7 @@ if (isset($_POST["add_product_btn"])) {
   <?php if (isset($_SESSION["error_code"])) : ?>
     <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
       <?php
-      echo $_SESSION["error_message"];      
+      echo $_SESSION["error_message"];
       unset($_SESSION["error_code"]);
       unset($_SESSION["error_message"]);
       ?>
