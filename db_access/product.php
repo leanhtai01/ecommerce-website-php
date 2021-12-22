@@ -29,3 +29,33 @@ function get_product_list()
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Add product's information to table products
+ *
+ * @param array $product_info Product's information (category_id, product_name,
+ * description, price, quantity_in_stock)
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function add_product_info($product_info)
+{
+  global $pdo;
+
+  $sql = "INSERT INTO products ("
+       . "category_id,"
+       . "product_name,"
+       . "description,"
+       . "price,"
+       . "quantity_in_stock)"    
+       . "VALUES ("
+       . ":category_id,"
+       . ":product_name,"
+       . ":description,"
+       . ":price,"
+       . ":quantity_in_stock);";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($product_info);
+
+  return $stmt->rowCount();
+}
