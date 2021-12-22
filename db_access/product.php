@@ -79,3 +79,26 @@ function add_product_img($img_info)
 
   return $stmt->rowCount() ? $pdo->lastInsertId() : false;
 }
+
+/**
+ * Add multiple product's image
+ *
+ * @param int $product_id Product's id
+ *
+ * @param array $sources_list Source to images
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function add_multiple_product_img($product_id, $sources_list)
+{ 
+  foreach ($sources_list as $src) {
+    if (!add_product_img([
+      "product_id" => $product_id,
+      "src" => $src
+    ])) {
+      return false;
+    }
+  }
+
+  return true;
+}
