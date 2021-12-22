@@ -83,7 +83,7 @@ function upload_multiple_product_img_to_aws_s3($imgs, $product_id)
 
   for ($i = 0; $i < $number_of_imgs; ++$i) {
     $uploaded_img = $imgs["tmp_name"][$i];
-    $new_name = "product_" . $product_id . "_" . uniqid() . ".jpg";
+    $new_name = "product_" . $product_id . "_" . uniqid("", true) . ".jpg";
 
     // upload the image
     $url = upload_img_to_aws_s3($uploaded_img, $new_name);
