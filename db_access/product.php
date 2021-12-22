@@ -134,3 +134,29 @@ function get_product_info($product_id)
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Get product's image sources
+ *
+ * @param int $product_id Product's id
+ *
+ * @return array|false Return product's image sources on success, false
+ * otherwise.
+ */
+function get_product_image_sources($product_id)
+{
+  $img_sources = [];
+
+  global $pdo;
+
+  $sql = "SELECT src FROM product_images WHERE product_id = :product_id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["product_id" => $product_id]);
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach ($result as $r) {
+    array_push($img_sources, $r["src"]);
+  }
+
+  return $img_sources;
+}
