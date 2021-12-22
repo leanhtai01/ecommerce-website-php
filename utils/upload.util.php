@@ -27,6 +27,8 @@ function is_upload_multiple_img_success($imgs, $allow_img_types)
         return false;
       }
     }
+  } else {
+    return false;
   }
 
   return true;
