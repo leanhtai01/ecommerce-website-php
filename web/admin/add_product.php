@@ -2,6 +2,7 @@
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/category.php");
+require_once(dirname(dirname(__DIR__)) . "/utils/upload.util.php");
 
 if ($_SESSION["role_id"] != 0) {
   http_response_code(404);
@@ -12,27 +13,40 @@ if ($_SESSION["role_id"] != 0) {
 $title = "Add Product";
 $page = "add_product";
 
+$allow_img_types = [IMAGETYPE_JPEG];
 $categories = get_category_list();
+
+if (isset($_POST["add_product_btn"])) {
+  if (!is_upload_multiple_img_success(
+    $_FILES["product_images"],
+    $allow_img_types
+  )) {
+    $_SESSION["error_code"] = 1;
+    $_SESSION["error_message"] = "Please provide at least one product's image "
+      . "in JPEG format with size <= 2MB!";
+  }
+}
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
+<div class="text-center">
+  <h1 class="mt-4">Add Product</h1>
+  
+  <!-- Display error message -->
+  <?php if (isset($_SESSION["error_code"])) : ?>
+    <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
+      <?php echo $_SESSION["error_message"]; ?>
+    </div>
+  <?php endif; ?>
+</div>
 <div class="text-center register-form">
-  <form class="row g-3" action="" method="post">
-    <h1 class="mt-4">Add Product</h1>
-
-    <!-- Display error message -->
-    <?php if (isset($error_code)) : ?>
-      <div class="alert <?php echo $error_code == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
-        <?php echo $error_message; ?>
-      </div>
-    <?php endif; ?>
-
+  <form class="row g-3" action="" method="post" enctype="multipart/form-data">
     <div class="col-12 form-floating">
       <select class="form-select" name="category_id" id="category_id">
         <?php foreach ($categories as $category) : ?>
           <option value="<?php echo $category["id"] ?>"><?php echo $category["category_name"] ?></option>
-        <?php endforeach; ?>        
+        <?php endforeach; ?>
       </select>
       <label for="category_id">Category</label>
     </div>
