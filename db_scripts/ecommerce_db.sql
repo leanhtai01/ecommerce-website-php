@@ -40,11 +40,6 @@ CREATE TABLE roles (
   CONSTRAINT unq_roles_role_name UNIQUE (role_name)
 );
 
-INSERT INTO roles (id, role_name, description)
-VALUES (0, 'admin', 'Administrator'),
-       (1, 'user', 'Registered user'),
-       (2, 'guest', 'Unregistered user');
-
 DROP TABLE IF EXISTS tokens;
 CREATE TABLE tokens (
   id INT NOT NULL AUTO_INCREMENT,

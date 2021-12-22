@@ -324,3 +324,8 @@ VALUES
   1,
   1
 );
+
+INSERT INTO roles (id, role_name, description)
+VALUES (0, 'admin', 'Administrator'),
+       (1, 'user', 'Registered user'),
+       (2, 'guest', 'Unregistered user');
