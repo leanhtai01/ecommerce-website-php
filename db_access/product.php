@@ -4,7 +4,7 @@ require_once(dirname(__DIR__) . "/conf/db.conf.php");
 /**
  * Get list of product include category's name
  *
- * @Return array|false Return array containt product's information or false if
+ * @return array|false Return array containt products's information or false if
  * failed.
  */
 function get_product_list()

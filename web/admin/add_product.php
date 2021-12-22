@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/category.php");
 
 if ($_SESSION["role_id"] != 0) {
   http_response_code(404);
@@ -10,6 +11,8 @@ if ($_SESSION["role_id"] != 0) {
 
 $title = "Add Product";
 $page = "add_product";
+
+$categories = get_category_list();
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
@@ -27,9 +30,9 @@ $page = "add_product";
 
     <div class="col-12 form-floating">
       <select class="form-select" name="category" id="category">
-        <option value="1">Computers</option>
-        <option value="2" selected>Books</option>
-        <option value="3">Video Games</option>
+        <?php foreach ($categories as $category) : ?>
+          <option value="<?php echo $category["id"] ?>"><?php echo $category["category_name"] ?></option>
+        <?php endforeach; ?>        
       </select>
       <label for="category">Category</label>
     </div>
