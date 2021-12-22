@@ -73,7 +73,7 @@ function add_product_img($img_info)
   global $pdo;
 
   $sql = "INSERT INTO product_images (product_id, src) "
-       . "VALUES (:product_id, :src);";
+    . "VALUES (:product_id, :src);";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($img_info);
 
@@ -90,7 +90,7 @@ function add_product_img($img_info)
  * @return bool Return true on success, false otherwise
  */
 function add_multiple_product_img($product_id, $sources_list)
-{ 
+{
   foreach ($sources_list as $src) {
     if (!add_product_img([
       "product_id" => $product_id,
@@ -101,4 +101,36 @@ function add_multiple_product_img($product_id, $sources_list)
   }
 
   return true;
+}
+
+/**
+ * Get product's info (id, category_id, category_name, product_name,
+ * description, price, quantity_in_stock)
+ *
+ * @param int $product_id Product's id
+ *
+ * @return array|false Return product's info on success, false otherwise
+ */
+function get_product_info($product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT "
+    . "p.id,"
+    . "p.category_id,"
+    . "c.category_name,"
+    . "p.product_name,"
+    . "p.description,"
+    . "p.price,"
+    . "p.quantity_in_stock,"
+    . "p.create_at "
+    . "FROM products p "
+    . "INNER JOIN categories c "
+    . "ON p.category_id = c.id "
+    . "WHERE p.id = :id";
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $product_id]);
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
