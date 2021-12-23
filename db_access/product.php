@@ -132,7 +132,7 @@ function get_product_info($product_id)
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["id" => $product_id]);
 
-  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 /**
