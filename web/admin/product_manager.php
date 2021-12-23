@@ -52,7 +52,7 @@ $products = get_product_list();
               <td><?php echo $product["price"] ?></td>
               <td><?php echo $product["quantity_in_stock"] ?></td>
               <td><?php echo $product["create_at"] ?></td>
-              <td><a class="btn btn-info" href="">Edit</a></td>
+              <td><a class="btn btn-info" href="<?php echo $host_url; ?>/admin/edit_product.php?id=<?php echo $product["id"] ?>">Edit</a></td>
               <td><a class="btn btn-danger" href="">Delete</a></td>
             </tr>
           <?php endforeach; ?>
