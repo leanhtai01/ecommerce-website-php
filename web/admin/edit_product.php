@@ -26,25 +26,16 @@ $categories = get_category_list();
 if (isset($_POST["update_product_btn"])) {
   // save product's id
   $id = $product_info["id"];
-  
+
   $product_info = extract_product_info($_POST);
 
   // add product's id back
   $product_info["id"] = $id;
-  
-  $imgs = $_FILES["product_images"];
 
-  if (!is_upload_multiple_img_success(
-    $imgs,
-    $allow_img_types
-  )) {
-    $_SESSION["error_code"] = 1;
-    $_SESSION["error_message"] = "Please provide at least one product's image "
-      . "in JPEG format with size <= 2MB!";
-  } elseif (!is_valid_product_info($product_info)) {
-    $_SESSION["error_code"] = 1;
-    $_SESSION["error_message"] = "Invalid input!";
-  } else {
+  $imgs = $_FILES["product_images"];
+  $error_code = is_upload_multiple_img_success($imgs, $allow_img_types);
+
+  if ($error_code == 0) {
     update_product_info($product_info);
     add_multiple_product_img(
       $id,
@@ -53,6 +44,13 @@ if (isset($_POST["update_product_btn"])) {
 
     $_SESSION["error_code"] = 0;
     $_SESSION["error_message"] = "Product updated successfully!";
+  } elseif ($error_code == 4) {
+    update_product_info($product_info);
+    $_SESSION["error_code"] = 0;
+    $_SESSION["error_message"] = "Product updated successfully!";
+  } else {
+    $_SESSION["error_code"] = $error_code;
+    $_SESSION["error_message"] = get_image_upload_error_message($error_code);
   }
 }
 ?>
