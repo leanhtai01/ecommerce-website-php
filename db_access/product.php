@@ -172,11 +172,37 @@ function get_product_image_sources($product_id)
 function get_first_product_image_source($product_id)
 {
   global $pdo;
-  
+
   $sql = "SELECT src FROM product_images WHERE product_id = :product_id";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["product_id" => $product_id]);
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
   return $result["src"];
+}
+
+/**
+ * Update product's information
+ *
+ * @param array $product_info Product's information (id, category_id,
+ * product_name, description, price, quantity_in_stock)
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function update_product_info($product_info)
+{
+  global $pdo;
+
+  $sql = "UPDATE products SET "
+    . "category_id = :category_id,"
+    . "product_name = :product_name,"
+    . "description = :description,"
+    . "price = :price,"
+    . "quantity_in_stock = :quantity_in_stock "
+    . "WHERE id = :id;";
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($product_info);
+
+  return $stmt->rowCount() > 0;
 }
