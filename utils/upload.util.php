@@ -11,27 +11,27 @@ use Aws\S3\S3Client;
  *
  * @param array $allow_img_types Image file type allow to upload.
  *
- * @return bool Return true if all images upload success, false otherwise
+ * @return int Return error_code as defined in get_error_message function
  */
 function is_upload_multiple_img_success($imgs, $allow_img_types)
 {
-  if (isset($imgs)) {
-    $number_of_imgs = count($imgs["name"]);
+  $error_code = 0;
+  $number_of_imgs = count($imgs["name"]);
 
-    for ($i = 0; $i < $number_of_imgs; ++$i) {
-      if (
-        $imgs["error"][$i] != UPLOAD_ERR_OK
-        || !is_uploaded_file($imgs["tmp_name"][$i])
-        || !in_array(exif_imagetype($imgs["tmp_name"][$i]), $allow_img_types)
-      ) {
-        return false;
-      }
+  for ($i = 0; $i < $number_of_imgs; ++$i) {
+    // get error code from upload
+    $error_code = $imgs["error"][$i];
+
+    // if image uploaded success, check whether it in valid format
+    if (
+      $error_code == 0
+      && !in_array(exif_imagetype($imgs["tmp_name"][$i]), $allow_img_types)
+    ) {
+      return 9;
     }
-  } else {
-    return false;
   }
 
-  return true;
+  return $error_code;
 }
 
 /**
@@ -41,11 +41,11 @@ function is_upload_multiple_img_success($imgs, $allow_img_types)
  *
  * @return string Return error message corresponding to error_code
  */
-function get_error_message($error_code)
+function get_image_upload_error_message($error_code)
 {
   $error_message = [
-    0 => "There is no error, the file uploaded with success",
-    1 => "The uploaded file exceeds the upload_max_filesize directive in "
+    0 => "There is no error, the image uploaded with success",
+    1 => "The uploaded image exceeds the upload_max_filesize directive in "
       . "php.ini",
     2 => "The uploaded file exceeds the MAX_FILE_SIZE directive that was "
       . "specified in the HTML form",
@@ -54,8 +54,7 @@ function get_error_message($error_code)
     6 => "Missing a temporary folder",
     7 => "Failed to write file to disk.",
     8 => "A PHP extension stopped the file upload.",
-    9 => "Invalid format.",
-    10 => "File wasn't uploaded via HTTP POST"
+    9 => "Invalid format. Please provide image in JPEG format"
   ];
 
   return $error_message[$error_code];

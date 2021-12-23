@@ -20,18 +20,9 @@ $categories = get_category_list();
 if (isset($_POST["add_product_btn"])) {
   $product_info = extract_product_info($_POST);
   $imgs = $_FILES["product_images"];
+  $error_code = is_upload_multiple_img_success($imgs, $allow_img_types);
 
-  if (!is_upload_multiple_img_success(
-    $imgs,
-    $allow_img_types
-  )) {
-    $_SESSION["error_code"] = 1;
-    $_SESSION["error_message"] = "Please provide at least one product's image "
-      . "in JPEG format with size <= 2MB!";
-  } elseif (!is_valid_product_info($product_info)) {
-    $_SESSION["error_code"] = 1;
-    $_SESSION["error_message"] = "Invalid input!";
-  } else {
+  if ($error_code == 0) {
     $product_id = add_product_info($product_info);
     add_multiple_product_img(
       $product_id,
@@ -40,6 +31,13 @@ if (isset($_POST["add_product_btn"])) {
 
     $_SESSION["error_code"] = 0;
     $_SESSION["error_message"] = "Product added successfully!";
+  } elseif ($error_code == 4) {
+    add_product_info($product_info);
+    $_SESSION["error_code"] = 0;
+    $_SESSION["error_message"] = "Product added successfully! (no images)";
+  } else {
+    $_SESSION["error_code"] = $error_code;
+    $_SESSION["error_message"] = get_image_upload_error_message($error_code);
   }
 }
 ?>
