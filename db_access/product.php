@@ -160,3 +160,23 @@ function get_product_image_sources($product_id)
 
   return $img_sources;
 }
+
+/**
+ * Get first product's image source
+ *
+ * @param int $product_id Product's id
+ *
+ * @return string|false Return first product's image source on success, false
+ * otherwise.
+ */
+function get_first_product_image_source($product_id)
+{
+  global $pdo;
+  
+  $sql = "SELECT src FROM product_images WHERE product_id = :product_id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["product_id" => $product_id]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  return $result["src"];
+}
