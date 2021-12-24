@@ -15,6 +15,9 @@ if (
   include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
   exit();
 }
+
+$product_image_sources = get_product_image_sources($_GET["id"]);
+$image_count = count($product_image_sources);
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
@@ -26,20 +29,16 @@ if (
     <div class="col-md-6">
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <?php for ($i = 0; $i < $image_count; ++$i) : ?>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>" <?php echo $i == 0 ? 'class="active"' : ""; ?> aria-current="true" aria-label="Slide <?php echo $i; ?>"></button>
+          <?php endfor; ?>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://leanhtai01.s3.us-east-2.amazonaws.com/product_1_61c53b0497c5f5.56456129.jpg" class="d-block w-100" style="height: 500px;" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://leanhtai01.s3.us-east-2.amazonaws.com/product_1_61c53b07ea8897.58915905.jpg" class="d-block w-100" style="height: 500px;" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://leanhtai01.s3.us-east-2.amazonaws.com/product_1_61c53b0a2f4608.90766388.jpg" class="d-block w-100" style="height: 500px;" alt="...">
-          </div>
+          <?php for ($i = 0; $i < $image_count; ++$i) : ?>
+            <div class="carousel-item <?php echo $i == 0 ? "active" : ""; ?>">
+              <img src="<?php echo $product_image_sources[$i]; ?>" class="d-block w-100" style="height: 500px;" alt="...">
+            </div>
+          <?php endfor; ?>                              
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
