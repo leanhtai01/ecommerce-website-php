@@ -1,4 +1,6 @@
 <?php
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+
 $title = "Product Detail";
 $page = "product_detail";
 ?>
