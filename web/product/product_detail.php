@@ -73,17 +73,19 @@ if (
         (224 in stock)
       </div>
 
-      <div class="container mt-4">
-        <div class="row">
-          <div class="col-4">
-            <a class="btn btn-primary" href="">Add to cart</a>
-          </div>
+      <?php if (isset($_SESSION["account_info"])) : ?>
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col-4">
+              <a class="btn btn-primary" href="">Add to cart</a>
+            </div>
 
-          <div class="col-8">
-            <a class="btn btn-info" href="">Add to favorites</a>
+            <div class="col-8">
+              <a class="btn btn-info" href="">Add to favorites</a>
+            </div>
           </div>
         </div>
-      </div>
+      <?php endif; ?>
     </div>
   </div>
   <div class="row mt-5">
