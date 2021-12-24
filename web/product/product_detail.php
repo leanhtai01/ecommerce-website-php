@@ -64,7 +64,7 @@ if (
       </div>
 
       <div class="product-price mt-4">
-        <h4 class="text-danger" style="display: inline;">VND <?php echo $product_info["price"]; ?></h4>
+        <h4 class="text-danger" style="display: inline;">VND <?php echo number_format($product_info["price"], 2); ?></h4>
       </div>
 
       <div class="product-quantity mt-4">
