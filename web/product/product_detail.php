@@ -86,12 +86,14 @@ $page = "product_detail";
     <h2>Comments</h2>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <textarea class="form-control" placeholder="Enter comment here..." name="commnet" id="comment" style="height: 150px"></textarea>
-    </div>
-    <div>
-      <button class="btn btn-primary mt-2" type="submit">Add comment</button>
-    </div>
+    <form action="" method="post">
+      <div class="col-md-12">
+        <textarea class="form-control" placeholder="Enter comment here..." name="commnet" id="comment" style="height: 150px"></textarea>
+      </div>
+      <div>
+        <button class="btn btn-primary mt-2" type="submit">Add comment</button>
+      </div>
+    </form>
   </div>
   <div class="row mt-5">
     <div class="col-md-12">
