@@ -55,7 +55,7 @@ if (
     <!-- Product's information -->
     <div class="col-md-6">
       <div class="product-name">
-        <h1>Acer Nitro 5 AN515-55-53E5 Gaming Laptop</h1>
+        <h1><?php echo $product_info["product_name"]; ?></h1>
       </div>
 
       <div class="favorites mt-4">
@@ -64,13 +64,13 @@ if (
       </div>
 
       <div class="product-price mt-4">
-        <h4 class="text-danger" style="display: inline;">VND 16.500.000</h4>
+        <h4 class="text-danger" style="display: inline;">VND <?php echo $product_info["price"]; ?></h4>
       </div>
 
       <div class="product-quantity mt-4">
         <label for="quantity">Quantity:</label>
         <input name="quantity" id="quantity" type="number" value="1" />
-        (224 in stock)
+        (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
       </div>
 
       <?php if (isset($_SESSION["account_info"])) : ?>
@@ -92,7 +92,7 @@ if (
     <div class="col-md-12">
       <h2>Description</h2>
       <p>
-        Dominate the Game: With the 10th Gen Intel Core i5-10300H processor, your Nitro 5 is packed with incredible power for all your games
+        <?php echo $product_info["description"]; ?>
       </p>
     </div>
   </div>
