@@ -111,3 +111,11 @@ CREATE TABLE carts (
   quantity INT NOT NULL,
   CONSTRAINT pk_carts PRIMARY KEY (account_id, product_id)
 );
+
+DROP TABLE IF EXISTS ratings;
+CREATE TABLE ratings (
+  account_id INT NOT NULL,
+  product_id INT NOT NULL,
+  comment TEXT NOT NULL,
+  CONSTRAINT pk_ratings PRIMARY KEY (account_id, product_id)
+);
