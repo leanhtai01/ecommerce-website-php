@@ -117,5 +117,6 @@ CREATE TABLE ratings (
   account_id INT NOT NULL,
   product_id INT NOT NULL,
   comment TEXT NOT NULL,
+  create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT pk_ratings PRIMARY KEY (account_id, product_id)
 );
