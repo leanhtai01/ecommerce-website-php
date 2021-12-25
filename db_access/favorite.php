@@ -48,3 +48,27 @@ function remove_favorite($account_id, $product_id)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Check whether product in favorites
+ *
+ * @param int $account_id Account's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @return bool Return true if product in favorites, false otherwise
+ */
+function is_in_favorites($account_id, $product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM favorites "
+       . "WHERE account_id = :account_id AND product_id = :product_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "account_id" => $account_id,
+    "product_id" => $product_id
+  ]);
+
+  return $stmt->fetchColumn() > 0;
+}
