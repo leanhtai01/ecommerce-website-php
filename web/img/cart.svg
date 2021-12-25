@@ -52,8 +52,8 @@
     <ellipse
        style="fill:#808080;fill-opacity:1;stroke-width:12.8718;stroke-miterlimit:4;stroke-dasharray:none"
        id="path1036"
-       cx="88.636658"
-       cy="167.00597"
+       cx="88.524002"
+       cy="168.24207"
        rx="14.821563"
        ry="14.147857" />
     <ellipse
@@ -73,6 +73,6 @@
          id="tspan18073"
          style="stroke-width:0.264583"
          x="74.083336"
-         y="132.29167"></tspan></text>
+         y="132.29167" /></text>
   </g>
 </svg>
