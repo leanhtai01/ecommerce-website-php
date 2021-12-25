@@ -41,9 +41,7 @@ if (isset($_POST["add_comment_btn"])) {
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
-<div class="text-center">
-  <h1 class="mt-4">Add Product</h1>
-
+<div class="text-center">  
   <!-- Display error message -->
   <?php if (isset($_SESSION["error_code"])) : ?>
     <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
