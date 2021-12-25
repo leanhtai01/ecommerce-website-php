@@ -24,3 +24,27 @@ function add_favorite($account_id, $product_id)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Delete product from favorites
+ *
+ * @param int $account_id Account's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function remove_favorite($account_id, $product_id)
+{
+  global $pdo;
+
+  $sql = "DELETE FROM favorites "
+    . "WHERE account_id = :account_id AND product_id = :product_id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "account_id" => $account_id,
+    "product_id" => $product_id
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
