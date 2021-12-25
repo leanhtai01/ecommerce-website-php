@@ -66,6 +66,11 @@
               </li>
             <?php endif; ?>
           </ul>
+          <ul class="navbar-nav navbar-right me-4">
+            <li class="nav-item">
+              <a href="" class="nav-link"><img height="36" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /></a>
+            </li>
+          </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
