@@ -4,6 +4,7 @@ require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/rating.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/favorite.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 
 $title = "Product Detail";
 $page = "product_detail";
@@ -55,6 +56,21 @@ if (isset($_POST["remove_from_favorites_btn"])) {
   $account_id = $_POST["account_id"];
   $product_id = $_POST["product_id"];
   remove_favorite($account_id, $product_id);
+}
+
+// add product to cart
+if (isset($_POST["add_to_cart_btn"])) {
+  $account_id = $_POST["account_id"];
+  $product_id = $_POST["product_id"];
+  $quantity = $_POST["quantity"];
+
+  if (add_to_cart($account_id, $product_id, $quantity)) {
+    $_SESSION["error_code"] = 0;
+    $_SESSION["error_message"] = "Product added to cart!";
+  } else {
+    $_SESSION["error_code"] = 1;
+    $_SESSION["error_message"] = "Something went wrong!";
+  }
 }
 ?>
 
@@ -127,7 +143,13 @@ if (isset($_POST["remove_from_favorites_btn"])) {
       <?php if (isset($_SESSION["account_info"])) : ?>
         <div class="container mt-4">
           <div class="row">
+            <?php
+            $account_id = $_SESSION["account_info"]["id"];
+            $product_id = $_GET["id"];
+            ?>
             <form action="" method="post">
+              <input name="account_id" id="account_id" type="hidden" value="<?php echo $account_id; ?>" />
+              <input name="product_id" id="product_id" type="hidden" value="<?php echo $product_id; ?>" />
               <label for="quantity">Quantity:</label>
               <input name="quantity" id="quantity" type="number" value="1" />
               (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
