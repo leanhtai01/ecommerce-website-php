@@ -22,9 +22,6 @@ if (
 $product_image_sources = get_product_image_sources($_GET["id"]);
 $image_count = count($product_image_sources);
 
-// get all ratings for product
-$ratings = get_ratings_by_product_id($_GET["id"]);
-
 // add comment
 if (isset($_POST["add_comment_btn"])) {
   // check whether comment is empty
@@ -42,6 +39,9 @@ if (isset($_POST["add_comment_btn"])) {
     $_SESSION["error_message"] = "Comment must not be empty!";
   }
 }
+
+// get all ratings for product
+$ratings = get_ratings_by_product_id($_GET["id"]);
 
 // add product to favorites
 if (isset($_POST["add_to_favorites_btn"])) {
