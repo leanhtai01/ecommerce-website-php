@@ -117,15 +117,15 @@ if (isset($_POST["remove_from_favorites_btn"])) {
         <h4 class="text-danger" style="display: inline;">VND <?php echo number_format($product_info["price"], 2); ?></h4>
       </div>
 
-      <div class="product-quantity mt-4">
-        <label for="quantity">Quantity:</label>
-        <input name="quantity" id="quantity" type="number" value="1" />
-        (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
-      </div>
-
       <?php if (isset($_SESSION["account_info"])) : ?>
         <div class="container mt-4">
           <div class="row">
+            <div class="product-quantity mt-4 mb-4">
+              <label for="quantity">Quantity:</label>
+              <input name="quantity" id="quantity" type="number" value="1" />
+              (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
+            </div>
+            
             <div class="col-4">
               <a class="btn btn-primary" href="">Add to cart</a>
             </div>
