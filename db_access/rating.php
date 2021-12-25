@@ -51,3 +51,23 @@ function is_rated($account_id, $product_id)
 
   return $stmt->fetchColumn() > 0;
 }
+
+/**
+ * Get ratings by product's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @return array|false Return all ratings for given product. Return false on
+ * failure.
+ */
+function get_ratings_by_product_id($product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT * FROM ratings WHERE product_id = :product_id "
+  . "ORDER BY create_at DESC;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["product_id" => $product_id]);
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
