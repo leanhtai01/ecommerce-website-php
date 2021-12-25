@@ -66,11 +66,13 @@
               </li>
             <?php endif; ?>
           </ul>
-          <ul class="navbar-nav navbar-right me-4">
-            <li class="nav-item">
-              <a href="" class="nav-link"><img style="height: 2.4em;" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /><span class="align-top ms-2">5</span></a>
-            </li>
-          </ul>
+          <?php if (isset($_SESSION["account_info"])) : ?>
+            <ul class="navbar-nav navbar-right me-4">
+              <li class="nav-item">
+                <a href="" class="nav-link"><img style="height: 2.4em;" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /><span class="align-top ms-2">5</span></a>
+              </li>
+            </ul>
+          <?php endif; ?>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
