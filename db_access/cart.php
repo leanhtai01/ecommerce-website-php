@@ -14,6 +14,12 @@ require_once(dirname(__DIR__) . "/conf/db.conf.php");
  */
 function add_to_cart($account_id, $product_id, $quantity)
 {
+  // if product is in cart, update the quantity
+  if (is_in_cart($account_id, $product_id)) {
+    $curr_quantity = get_product_quantity_in_cart($account_id, $product_id);
+    return update_cart($account_id, $product_id, $quantity + $curr_quantity);
+  }
+  
   global $pdo;
 
   $sql = "INSERT INTO carts (account_id, product_id, quantity) "
