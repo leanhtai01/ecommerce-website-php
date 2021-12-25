@@ -68,7 +68,7 @@
           </ul>
           <ul class="navbar-nav navbar-right me-4">
             <li class="nav-item">
-              <a href="" class="nav-link"><img height="36" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /></a>
+              <a href="" class="nav-link"><img style="height: 2.4em;" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /><span class="align-top ms-2">5</span></a>
             </li>
           </ul>
           <form class="d-flex">
