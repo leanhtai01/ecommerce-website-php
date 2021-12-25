@@ -78,3 +78,28 @@ function update_cart($account_id, $product_id, $quantity)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Get product's quantity in cart
+ *
+ * @param int $account_id Account's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @return int|false Return product's quantity on success, false otherwise
+ */
+function get_product_quantity_in_cart($account_id, $product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT quantity FROM carts "
+    . "WHERE account_id = :account_id AND product_id = :product_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "account_id" => $account_id,
+    "product_id" => $product_id
+  ]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  return $result ? $result["quantity"] : false;
+}
