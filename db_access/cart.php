@@ -109,3 +109,21 @@ function get_product_quantity_in_cart($account_id, $product_id)
 
   return $result ? $result["quantity"] : false;
 }
+
+/**
+ * Get number of products in cart
+ *
+ * @param int $account_id Account's id
+ *
+ * @return int Number of product in cart
+ */
+function get_number_of_product_in_cart($account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT SUM(quantity) FROM carts WHERE account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+
+  return $stmt->fetchColumn();
+}
