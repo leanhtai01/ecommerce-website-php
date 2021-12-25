@@ -166,6 +166,25 @@ function get_fullname_by_email($email)
 }
 
 /**
+ * Get fullname by id.
+ *
+ * @param string $id Account's id.
+ *
+ * @return string|false Return fullname if id exists, false otherwise
+ */
+function get_fullname_by_id($id)
+{
+  global $pdo;
+
+  $sql = "SELECT fullname FROM accounts WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $id]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  return $result ? $result["fullname"] : false;
+}
+
+/**
  * Check whether token is valid
  *
  * @param array $token_info Token's information (email, token)
