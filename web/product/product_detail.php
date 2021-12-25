@@ -3,6 +3,7 @@ require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/rating.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/favorite.php");
 
 $title = "Product Detail";
 $page = "product_detail";
@@ -40,6 +41,20 @@ if (isset($_POST["add_comment_btn"])) {
     $_SESSION["error_code"] = 1;
     $_SESSION["error_message"] = "Comment must not be empty!";
   }
+}
+
+// add product to favorites
+if (isset($_POST["add_to_favorites_btn"])) {
+  $account_id = $_POST["account_id"];
+  $product_id = $_POST["product_id"];
+  add_favorite($account_id, $product_id);
+}
+
+// remove product from favorites
+if (isset($_POST["remove_from_favorites_btn"])) {
+  $account_id = $_POST["account_id"];
+  $product_id = $_POST["product_id"];
+  remove_favorite($account_id, $product_id);
 }
 ?>
 
@@ -116,7 +131,23 @@ if (isset($_POST["add_comment_btn"])) {
             </div>
 
             <div class="col-8">
-              <a class="btn btn-info" href="">Add to favorites</a>
+              <?php
+              $account_id = $_SESSION["account_info"]["id"];
+              $product_id = $_GET["id"];
+              ?>
+              <?php if (!is_in_favorites($account_id, $product_id)) : ?>
+                <form action="" method="post">
+                  <input name="account_id" id="account_id" type="hidden" value="<?php echo $account_id; ?>" />
+                  <input name="product_id" id="product_id" type="hidden" value="<?php echo $product_id; ?>" />
+                  <button name="add_to_favorites_btn" id="add_to_favorites_btn" class="btn btn-info" type="submit">Add to favorites</button>
+                </form>
+              <?php else : ?>
+                <form action="" method="post">
+                  <input name="account_id" id="account_id" type="hidden" value="<?php echo $account_id; ?>" />
+                  <input name="product_id" id="product_id" type="hidden" value="<?php echo $product_id; ?>" />
+                  <button name="remove_from_favorites_btn" id="remove_from_favorites_btn" class="btn btn-danger" type="submit">Remove from favorites</button>
+                </form>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -162,7 +193,7 @@ if (isset($_POST["add_comment_btn"])) {
         </div>
       </div>
     </div>
-  <?php endforeach; ?>  
+  <?php endforeach; ?>
 </div>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/footer.php") ?>
