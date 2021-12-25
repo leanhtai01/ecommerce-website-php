@@ -110,7 +110,7 @@ if (isset($_POST["remove_from_favorites_btn"])) {
 
       <div class="favorites mt-4">
         <i class="bi bi-heart-fill"></i>
-        <h5 style="display: inline;">19</h5>
+        <h5 style="display: inline;"><?php echo get_number_of_favorites($_GET["id"]); ?></h5>
       </div>
 
       <div class="product-price mt-4">

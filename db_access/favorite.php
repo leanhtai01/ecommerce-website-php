@@ -72,3 +72,22 @@ function is_in_favorites($account_id, $product_id)
 
   return $stmt->fetchColumn() > 0;
 }
+
+/**
+ * Get number of favorites by product's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @return int Return number of favorites
+ */
+function get_number_of_favorites($product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM favorites "
+       . "WHERE product_id = :product_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["product_id" => $product_id]);
+
+  return $stmt->fetchColumn();
+}
