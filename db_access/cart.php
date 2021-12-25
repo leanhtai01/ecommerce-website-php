@@ -51,3 +51,30 @@ function is_in_cart($account_id, $product_id)
 
   return $stmt->fetchColumn() > 0;
 }
+
+/**
+ * Update product's quantity in cart
+ *
+ * @param int $account_id Account's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @param int $quantity Product's quantity
+ *
+ * @return bool Return true if update success, false otherwise 
+ */
+function update_cart($account_id, $product_id, $quantity)
+{
+  global $pdo;
+
+  $sql = "UPDATE carts SET quantity = :quantity "
+    . "WHERE account_id = :account_id AND product_id = :product_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "account_id" => $account_id,
+    "product_id" => $product_id,
+    "quantity" => $quantity
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
