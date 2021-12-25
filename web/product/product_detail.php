@@ -125,9 +125,9 @@ if (isset($_POST["remove_from_favorites_btn"])) {
               <input name="quantity" id="quantity" type="number" value="1" />
               (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
             </div>
-            
+
             <div class="col-4">
-              <a class="btn btn-primary" href="">Add to cart</a>
+              <button class="btn btn-primary" type="submit" name="add_to_cart_btn" id="add_to_cart_btn">Add to cart</button>              
             </div>
 
             <div class="col-8">
