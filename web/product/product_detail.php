@@ -104,33 +104,38 @@ if (isset($_POST["remove_from_favorites_btn"])) {
 
     <!-- Product's information -->
     <div class="col-md-6">
-      <div class="product-name">
-        <h1><?php echo $product_info["product_name"]; ?></h1>
-      </div>
+      <div class="container">
+        <div class="product-name row">
+          <div class="col">
+            <h1><?php echo $product_info["product_name"]; ?></h1>
+          </div>
+        </div>
 
-      <div class="favorites mt-4">
-        <i class="bi bi-heart-fill"></i>
-        <h5 style="display: inline;"><?php echo get_number_of_favorites($_GET["id"]); ?></h5>
-      </div>
+        <div class="favorites mt-4 row">
+          <div class="col"><i class="bi bi-heart-fill"></i>
+            <h5 style="display: inline;"><?php echo get_number_of_favorites($_GET["id"]); ?></h5>
+          </div>
+        </div>
 
-      <div class="product-price mt-4">
-        <h4 class="text-danger" style="display: inline;">VND <?php echo number_format($product_info["price"], 2); ?></h4>
+        <div class="product-price mt-4 row">
+          <div class="col">
+            <h4 class="text-danger" style="display: inline;">VND <?php echo number_format($product_info["price"], 2); ?></h4>
+          </div>
+        </div>
       </div>
 
       <?php if (isset($_SESSION["account_info"])) : ?>
         <div class="container mt-4">
           <div class="row">
-            <div class="product-quantity mt-4 mb-4">
+            <form action="" method="post">
               <label for="quantity">Quantity:</label>
               <input name="quantity" id="quantity" type="number" value="1" />
               (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
-            </div>
-
-            <div class="col-4">
-              <button class="btn btn-primary" type="submit" name="add_to_cart_btn" id="add_to_cart_btn">Add to cart</button>              
-            </div>
-
-            <div class="col-8">
+              <button class="btn btn-primary mt-4" type="submit" name="add_to_cart_btn" id="add_to_cart_btn">Add to cart</button>
+            </form>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
               <?php
               $account_id = $_SESSION["account_info"]["id"];
               $product_id = $_GET["id"];
