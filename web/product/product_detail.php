@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/rating.php");
 
 $title = "Product Detail";
@@ -19,6 +20,9 @@ if (
 
 $product_image_sources = get_product_image_sources($_GET["id"]);
 $image_count = count($product_image_sources);
+
+// get all ratings for product
+$ratings = get_ratings_by_product_id($_GET["id"]);
 
 // add comment
 if (isset($_POST["add_comment_btn"])) {
@@ -41,7 +45,7 @@ if (isset($_POST["add_comment_btn"])) {
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
-<div class="text-center">  
+<div class="text-center">
   <!-- Display error message -->
   <?php if (isset($_SESSION["error_code"])) : ?>
     <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
@@ -146,28 +150,19 @@ if (isset($_POST["add_comment_btn"])) {
       <p class="text-success">You already rated this product!</p>
     <?php endif; ?>
   <?php endif; ?>
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Lê Anh Tài (leanhtai01@gmail.com)</h5>
-          <p class="card-text">This product is very good!</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <?php foreach ($ratings as $rating) : ?>
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><?php echo get_fullname_by_id($rating["account_id"]); ?></h5>
+            <p class="card-text"><?php echo $rating["comment"]; ?></p>
+            <p class="card-text"><small class="text-muted"><?php echo $rating["create_at"]; ?></small></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nguyễn Thành Thái (nguyenthanhthai@gmail.com)</h5>
-          <p class="card-text">The bad product ever. Wasted my money!</p>
-          <p class="card-text"><small class="text-muted">Last updated 5 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php endforeach; ?>  
 </div>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/footer.php") ?>
