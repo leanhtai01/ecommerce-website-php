@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/rating.php");
 
 $title = "Product Detail";
 $page = "product_detail";
@@ -18,9 +19,42 @@ if (
 
 $product_image_sources = get_product_image_sources($_GET["id"]);
 $image_count = count($product_image_sources);
+
+// add comment
+if (isset($_POST["add_comment_btn"])) {
+  // check whether comment is empty
+  if (strlen(trim($_POST["comment"]))) {
+    $account_id = $_SESSION["account_info"]["id"];
+    $product_id = $_GET["id"];
+    $comment = $_POST["comment"];
+
+    add_rating($account_id, $product_id, $comment);
+
+    $_SESSION["error_code"] = 0;
+    $_SESSION["error_message"] = "Comment added successfully!";
+  } else {
+    $_SESSION["error_code"] = 1;
+    $_SESSION["error_message"] = "Comment must not be empty!";
+  }
+}
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
+
+<div class="text-center">
+  <h1 class="mt-4">Add Product</h1>
+
+  <!-- Display error message -->
+  <?php if (isset($_SESSION["error_code"])) : ?>
+    <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
+      <?php
+      echo $_SESSION["error_message"];
+      unset($_SESSION["error_code"]);
+      unset($_SESSION["error_message"]);
+      ?>
+    </div>
+  <?php endif; ?>
+</div>
 
 <div class="container">
   <div class="row mt-5">
@@ -38,7 +72,7 @@ $image_count = count($product_image_sources);
             <div class="carousel-item <?php echo $i == 0 ? "active" : ""; ?>">
               <img src="<?php echo $product_image_sources[$i]; ?>" class="d-block w-100" style="height: 500px;" alt="...">
             </div>
-          <?php endfor; ?>                              
+          <?php endfor; ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -102,10 +136,10 @@ $image_count = count($product_image_sources);
     <div class="row">
       <form action="" method="post">
         <div class="col-md-12">
-          <textarea class="form-control" placeholder="Enter comment here..." name="commnet" id="comment" style="height: 150px"></textarea>
+          <textarea class="form-control" placeholder="Enter comment here..." name="comment" id="comment" style="height: 150px"></textarea>
         </div>
         <div>
-          <button class="btn btn-primary mt-2" type="submit">Add comment</button>
+          <button class="btn btn-primary mt-2" type="submit" name="add_comment_btn" id="add_comment_btn">Add comment</button>
         </div>
       </form>
     </div>
