@@ -133,16 +133,20 @@ if (isset($_POST["add_comment_btn"])) {
     <h2>Comments</h2>
   </div>
   <?php if (isset($_SESSION["account_info"])) : ?>
-    <div class="row">
-      <form action="" method="post">
-        <div class="col-md-12">
-          <textarea class="form-control" placeholder="Enter comment here..." name="comment" id="comment" style="height: 150px"></textarea>
-        </div>
-        <div>
-          <button class="btn btn-primary mt-2" type="submit" name="add_comment_btn" id="add_comment_btn">Add comment</button>
-        </div>
-      </form>
-    </div>
+    <?php if (!is_rated($_SESSION["account_info"]["id"], $_GET["id"])) : ?>
+      <div class="row">
+        <form action="" method="post">
+          <div class="col-md-12">
+            <textarea class="form-control" placeholder="Enter comment here..." name="comment" id="comment" style="height: 150px"></textarea>
+          </div>
+          <div>
+            <button class="btn btn-primary mt-2" type="submit" name="add_comment_btn" id="add_comment_btn">Add comment</button>
+          </div>
+        </form>
+      </div>
+    <?php else : ?>
+      <p class="text-success">You already rated this product!</p>
+    <?php endif; ?>
   <?php endif; ?>
   <div class="row mt-5">
     <div class="col-md-12">
