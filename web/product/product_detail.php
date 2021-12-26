@@ -67,6 +67,8 @@ if (isset($_POST["add_to_cart_btn"])) {
   if (add_to_cart($account_id, $product_id, $quantity)) {
     $_SESSION["error_code"] = 0;
     $_SESSION["error_message"] = "Product added to cart!";
+    $_SESSION["number_of_product_in_cart"]
+      = get_number_of_product_in_cart($_SESSION["account_info"]["id"]);
   } else {
     $_SESSION["error_code"] = 1;
     $_SESSION["error_message"] = "Something went wrong!";

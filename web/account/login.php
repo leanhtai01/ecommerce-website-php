@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 
 $title = "Login";
 $page = "login";
@@ -14,6 +15,8 @@ if (isset($_POST["login_btn"])) {
   if (is_array($account_info)) {
     $_SESSION["account_info"] = $account_info;
     $_SESSION["role_id"] = $account_info["role_id"];
+    $_SESSION["number_of_product_in_cart"]
+      = get_number_of_product_in_cart($_SESSION["account_info"]["id"]);
 
     // redirect user to suitable location
     if ($_SESSION["role_id"] == 0) {

@@ -69,7 +69,7 @@
           <?php if (isset($_SESSION["account_info"])) : ?>
             <ul class="navbar-nav navbar-right me-4">
               <li class="nav-item">
-                <a href="" class="nav-link"><img style="height: 2.4em;" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /><span class="align-top ms-2">5</span></a>
+                <a href="" class="nav-link"><img style="height: 2.4em;" alt="" src="<?php echo $host_url; ?>/img/cart.svg" /><span class="align-top ms-2"><?php echo $_SESSION["number_of_product_in_cart"]; ?></span></a>
               </li>
             </ul>
           <?php endif; ?>
