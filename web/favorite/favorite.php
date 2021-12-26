@@ -60,7 +60,7 @@ foreach ($product_id_list as $id) {
           <?php foreach ($products as $product) : ?>
             <tr>
               <td><img class="w-100" style="height: 100px;" alt="" src="<?php echo $product["first_image"]; ?>" /></td>
-              <td><?php echo $product["product_name"]; ?></td>
+              <td><a href="<?php echo $host_url; ?>/product/product_detail.php?id=<?php echo $product["id"]; ?>"><?php echo $product["product_name"]; ?></a></td>
               <td><?php echo $product["description"]; ?></td>
               <td class="text-success">VND <?php echo number_format($product["price"], 2); ?></td>
               <td><a class="btn btn-danger" href="<?php echo $host_url; ?>/favorite/remove_favorite.php?account_id=<?php echo $account_id . "&product_id=" . $product["id"]; ?>">Remove</a></td>
