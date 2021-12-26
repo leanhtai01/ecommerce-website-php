@@ -206,3 +206,29 @@ function update_product_info($product_info)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Get product's info (first product's image, product_name, description, price)
+ *
+ * @param int $product_id Product's id
+ *
+ * @return array|false Return product's info on success, false otherwise
+ */
+function get_shorten_product_info($product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT "
+    . "product_name,"
+    . "description,"
+    . "price,"
+    . "FROM products;"
+    . "WHERE id = :id";
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $product_id]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $result["first_image"] = get_first_product_image_source($product_id);
+
+  return $result;
+}
