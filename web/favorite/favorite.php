@@ -63,7 +63,7 @@ foreach ($product_id_list as $id) {
               <td><?php echo $product["product_name"]; ?></td>
               <td><?php echo $product["description"]; ?></td>
               <td class="text-success">VND <?php echo number_format($product["price"], 2); ?></td>
-              <td><a class="btn btn-danger" href="">Remove</a></td>
+              <td><a class="btn btn-danger" href="<?php echo $host_url; ?>/favorite/remove_favorite.php?account_id=<?php echo $account_id . "&product_id=" . $product["id"]; ?>">Remove</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
