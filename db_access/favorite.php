@@ -63,7 +63,7 @@ function is_in_favorites($account_id, $product_id)
   global $pdo;
 
   $sql = "SELECT COUNT(*) FROM favorites "
-       . "WHERE account_id = :account_id AND product_id = :product_id;";
+    . "WHERE account_id = :account_id AND product_id = :product_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
     "account_id" => $account_id,
@@ -85,9 +85,34 @@ function get_number_of_favorites($product_id)
   global $pdo;
 
   $sql = "SELECT COUNT(*) FROM favorites "
-       . "WHERE product_id = :product_id;";
+    . "WHERE product_id = :product_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["product_id" => $product_id]);
 
   return $stmt->fetchColumn();
+}
+
+/**
+ * Get favorite list
+ *
+ * @param int @account_id Account's id
+ *
+ * @return array Return favorite list (product's id list)
+ */
+function get_favorite_list($account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT product_id FROM favorites WHERE account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  $favorite_list = [];
+
+  foreach ($result as $r) {
+    array_push($favorite_list, $r["product_id"]);
+  }
+
+  return $favorite_list;
 }
