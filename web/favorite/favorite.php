@@ -62,7 +62,7 @@ foreach ($product_id_list as $id) {
               <td><img class="w-100" style="height: 100px;" alt="" src="<?php echo $product["first_image"]; ?>" /></td>
               <td><?php echo $product["product_name"]; ?></td>
               <td><?php echo $product["description"]; ?></td>
-              <td><?php echo $product["price"]; ?></td>
+              <td class="text-success">VND <?php echo number_format($product["price"], 2); ?></td>
               <td><a class="btn btn-danger" href="">Remove</a></td>
             </tr>
           <?php endforeach; ?>
