@@ -228,3 +228,22 @@ function get_shorten_product_info($product_id)
 
   return $result;
 }
+
+/**
+ * Get newest products
+ *
+ * @param int $number_of_product Number of product to return
+ *
+ * @return array Return a number of newest product
+ */
+function get_newest_products($number_of_product)
+{
+  global $pdo;
+
+  $sql = "SELECT id, product_name, price FROM products ORDER BY create_at DESC "
+       . "LIMIT $number_of_product;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
