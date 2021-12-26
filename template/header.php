@@ -48,6 +48,11 @@
                 <a class="nav-link <?php echo $page == "register" ? "active" : "" ?>" href="<?php echo $host_url; ?>/account/register.php">Register</a>
               </li>
             <?php else : ?>
+              <?php if ($_SESSION["role_id"] == 1) : ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php echo $page == "favorite" ? "active" : "" ?>" href="<?php echo $host_url; ?>/favorite/favorite.php">Favorite products</a>
+                </li>
+              <?php endif; ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <?php echo $_SESSION["account_info"]["fullname"] ?>
