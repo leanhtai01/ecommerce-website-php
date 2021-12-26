@@ -218,12 +218,8 @@ function get_shorten_product_info($product_id)
 {
   global $pdo;
 
-  $sql = "SELECT "
-    . "product_name,"
-    . "description,"
-    . "price,"
-    . "FROM products;"
-    . "WHERE id = :id";
+  $sql = "SELECT product_name, description, price FROM products "
+    . "WHERE id = :id;";
 
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["id" => $product_id]);
