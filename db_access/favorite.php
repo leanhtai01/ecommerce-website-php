@@ -116,3 +116,21 @@ function get_favorite_list($account_id)
 
   return $favorite_list;
 }
+
+/**
+ * Get number of favorite
+ *
+ * @param int $account_id Account's id
+ *
+ * @return int Return number of favorites
+ */
+function get_number_of_favorite($account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM favorites WHERE account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+
+  return $stmt->fetchColumn();
+}
