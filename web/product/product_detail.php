@@ -154,7 +154,7 @@ if (isset($_POST["add_to_cart_btn"])) {
               <input name="product_id" id="product_id" type="hidden" value="<?php echo $product_id; ?>" />
               <label for="quantity">Quantity:</label>
               <input name="quantity" id="quantity" type="number" value="1" />
-              (<?php echo $product_info["quantity_in_stock"]; ?> in stock)
+              (<?php echo $product_info["quantity_in_stock"]; ?> in stock)<br>
               <button class="btn btn-primary mt-4" type="submit" name="add_to_cart_btn" id="add_to_cart_btn">Add to cart</button>
             </form>
           </div>
