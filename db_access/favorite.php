@@ -134,3 +134,33 @@ function get_number_of_favorite($account_id)
 
   return $stmt->fetchColumn();
 }
+
+/**
+ * Get only a number of favorites
+ *
+ * @param int $account_id Account's id.
+ *
+ * @param int $offset Beginning offset.
+ *
+ * @param int $number_of_records Number of records will be retrieved
+ *
+ * @return array|false Return number of records or false if failed
+ */
+function get_favorite_list_limit($account_id, $offset, $number_of_records)
+{
+  global $pdo;
+
+  $sql = "SELECT product_id FROM favorites WHERE account_id = :account_id "
+    . "LIMIT $offset, $number_of_records;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  $favorite_list = [];
+
+  foreach ($result as $r) {
+    array_push($favorite_list, $r["product_id"]);
+  }
+
+  return $favorite_list;
+}
