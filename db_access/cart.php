@@ -19,7 +19,7 @@ function add_to_cart($account_id, $product_id, $quantity)
     $curr_quantity = get_product_quantity_in_cart($account_id, $product_id);
     return update_cart($account_id, $product_id, $quantity + $curr_quantity);
   }
-  
+
   global $pdo;
 
   $sql = "INSERT INTO carts (account_id, product_id, quantity) "
@@ -121,9 +121,11 @@ function get_number_of_product_in_cart($account_id)
 {
   global $pdo;
 
-  $sql = "SELECT SUM(quantity) FROM carts WHERE account_id = :account_id;";
+  $sql = "SELECT SUM(quantity) AS total FROM carts "
+    . "WHERE account_id = :account_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["account_id" => $account_id]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);  
 
-  return $stmt->fetchColumn();
+  return $result["total"] ? $result["total"] : 0;
 }
