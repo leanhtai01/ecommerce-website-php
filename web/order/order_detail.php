@@ -2,6 +2,7 @@
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
 
 $title = "Order detail";
 $page = "order_detail";
@@ -71,7 +72,7 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
     <div class="col-md-1"></div>
     <div class="col-md-10 text-end">
       <label for="">
-        <h4>Payment total: <span class="text-success">VND 10,000,000.00</span></h4>
+        <h4>Payment total: <span class="text-success">VND <?php echo number_format(get_payment_total($_SESSION["account_info"]["id"]), 2); ?></span></h4>
       </label>
     </div>
     <div class="col-md-1"></div>
