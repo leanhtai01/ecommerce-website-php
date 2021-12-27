@@ -33,9 +33,9 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
           <h3>Shipping information</h3>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Fullname: Lê Anh Tài</li>
-          <li class="list-group-item">Phone number: 0357011672</li>
-          <li class="list-group-item">Address: Bình Phước</li>
+          <li class="list-group-item">Fullname: <?php echo $_SESSION["shipping_fullname"]; ?></li>
+          <li class="list-group-item">Phone number: <?php echo $_SESSION["shipping_phone_number"]; ?></li>
+          <li class="list-group-item">Address: <?php echo $_SESSION["shipping_address"]; ?></li>
         </ul>
       </div>
     </div>
