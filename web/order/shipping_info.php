@@ -18,6 +18,8 @@ if (isset($_POST["continue_btn"])) {
   $_SESSION["shipping_phone_number"] = $_POST["phone_number"];
   $_SESSION["shipping_fullname"] = $_POST["fullname"];
   $_SESSION["shipping_address"] = $_POST["address"];
+
+  header("Location: " . $host_url . "/order/order_detail.php");
 }
 ?>
 
