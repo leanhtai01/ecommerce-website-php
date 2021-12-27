@@ -41,7 +41,7 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
               <td><a href="<?php echo $host_url; ?>/product/product_detail.php?id=<?php echo $product["id"]; ?>" target="_blank"><?php echo $product["product_name"] ?></a></td>
               <td class="text-success">VND <?php echo number_format($product["price"], 2); ?></td>
               <td><?php echo $product["quantity"]; ?></td>
-              <td><a class="btn btn-info" href="">Update quantity</a></td>
+              <td><a class="btn btn-info" href="<?php echo $host_url; ?>/cart/update_cart.php?account_id=<?php echo $_SESSION["account_info"]["id"] . "&product_id=" . $product["id"]; ?>">Update quantity</a></td>
               <td><a class="btn btn-danger" href="<?php echo $host_url; ?>/cart/remove_product.php?account_id=<?php echo $_SESSION["account_info"]["id"] . "&product_id=" . $product["id"]; ?>">Remove</a></td>
             </tr>
           <?php endforeach; ?>
