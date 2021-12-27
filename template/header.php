@@ -78,8 +78,8 @@
               </li>
             </ul>
           <?php endif; ?>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" method="get" action="<?php echo $host_url . "/product/search_for_product.php"; ?>">
+            <input class="form-control me-2" type="search" placeholder="Search for product" aria-label="Search" name="keyword" id="keyword">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
