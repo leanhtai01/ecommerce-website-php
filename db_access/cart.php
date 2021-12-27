@@ -151,3 +151,27 @@ function get_products_in_cart($account_id)
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Remove product from cart
+ *
+ * @param int $account_id Account's id
+ *
+ * @param int $product_id Product's id
+ *
+ * @return bool Return true if remove success, false otherwise
+ */
+function remove_product_from_cart($account_id, $product_id)
+{
+  global $pdo;
+
+  $sql = "DELETE FROM carts "
+    . "WHERE account_id = :account_id AND product_id = :product_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "account_id" => $account_id,
+    "product_id" => $product_id
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
