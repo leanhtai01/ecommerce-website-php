@@ -53,7 +53,7 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10 d-flex justify-content-center mt-4">
-      <a class="btn btn-primary" href="">Proceed to checkout</a>
+      <a class="btn btn-primary" href="<?php echo $host_url; ?>/order/shipping_info.php">Proceed to checkout</a>
     </div>
     <div class="col-md-1"></div>
   </div>
