@@ -27,6 +27,8 @@ $top_favorite_products = get_top_favorite_products(10);
       </div>
     <?php endforeach; ?>
   </div>
+  <br />
+  <hr style="height:4px; width:100%; border-width:0; color:black; background-color:black">
   <h1 class="mt-4">Top favorite products</h1>
   <div class="row row-cols-1 row-cols-lg-5 row-cols-md-2 g-4">
     <?php foreach ($top_favorite_products as $product) : ?>
