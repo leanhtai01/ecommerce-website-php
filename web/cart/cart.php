@@ -1,5 +1,7 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 
 // only normal user can access this page
 if ($_SESSION["role_id"] != 1) {
@@ -10,6 +12,8 @@ if ($_SESSION["role_id"] != 1) {
 
 $title = "Cart";
 $page = "cart";
+
+$products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
 ?>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
@@ -31,14 +35,16 @@ $page = "cart";
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><img class="w-100" style="height: 100px;" alt="" src="https://leanhtai01.s3.us-east-2.amazonaws.com/product_3_61c5d4c64e07c0.80666908.jpg" /></td>
-            <td><a href="<?php echo $host_url; ?>/product/product_detail.php?id=<?php echo 3; ?>" target="_blank">Lenovo IdeaPad 3 Laptop</a></td>
-            <td class="text-success">VND <?php echo number_format(11003770.75, 2); ?></td>
-            <td><?php echo 1; ?></td>
-            <td><a class="btn btn-info" href="">Update quantity</a></td>
-            <td><a class="btn btn-danger" href="">Remove</a></td>
-          </tr>
+          <?php foreach ($products_in_cart as $product) : ?>
+            <tr>
+              <td><img class="w-100" style="height: 100px;" alt="" src="<?php echo get_first_product_image_source($product["id"]) ?>" /></td>
+              <td><a href="<?php echo $host_url; ?>/product/product_detail.php?id=<?php echo $product["id"]; ?>" target="_blank"><?php echo $product["product_name"] ?></a></td>
+              <td class="text-success">VND <?php echo number_format($product["price"], 2); ?></td>
+              <td><?php echo $product["quantity"]; ?></td>
+              <td><a class="btn btn-info" href="">Update quantity</a></td>
+              <td><a class="btn btn-danger" href="">Remove</a></td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>
