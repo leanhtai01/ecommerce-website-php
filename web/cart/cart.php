@@ -42,7 +42,7 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
               <td class="text-success">VND <?php echo number_format($product["price"], 2); ?></td>
               <td><?php echo $product["quantity"]; ?></td>
               <td><a class="btn btn-info" href="">Update quantity</a></td>
-              <td><a class="btn btn-danger" href="">Remove</a></td>
+              <td><a class="btn btn-danger" href="<?php echo $host_url; ?>/cart/remove_product.php?account_id=<?php echo $_SESSION["account_info"]["id"] . "&product_id=" . $product["id"]; ?>">Remove</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
