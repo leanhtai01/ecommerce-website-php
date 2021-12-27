@@ -164,3 +164,26 @@ function get_favorite_list_limit($account_id, $offset, $number_of_records)
 
   return $favorite_list;
 }
+
+/**
+ * Get top favorite products
+ *
+ * @param int $number_of_product Number of product to return
+ *
+ * @return array Return a number of top favorite products
+ */
+function get_top_favorite_products($number_of_product)
+{
+  global $pdo;
+
+  $sql = "SELECT p.id, p.product_name, p.price "
+    . "FROM products p INNER JOIN favorites f "
+    . "ON p.id = f.product_id "
+    . "GROUP BY p.id "
+    . "ORDER BY COUNT(p.id) DESC "
+    . "LIMIT $number_of_product;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

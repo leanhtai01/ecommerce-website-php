@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__DIR__) . "/conf/init.conf.php");
 require_once(dirname(__DIR__) . "/db_access/product.php");
+require_once(dirname(__DIR__) . "/db_access/favorite.php");
 
 $title = "leanhtai01-ecommerce";
 $page = "index";
