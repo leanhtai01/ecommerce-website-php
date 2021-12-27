@@ -13,5 +13,7 @@ if (
 }
 
 remove_product_from_cart($_GET["account_id"], $_GET["product_id"]);
+$_SESSION["number_of_product_in_cart"]
+  = get_number_of_product_in_cart($_SESSION["account_info"]["id"]);
 
 header("Location: " . $host_url . "/cart/cart.php");
