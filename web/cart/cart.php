@@ -1,6 +1,13 @@
 <?php
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 
+// only normal user can access this page
+if ($_SESSION["role_id"] != 1) {
+  http_response_code(404);
+  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
+  exit();
+}
+
 $title = "Cart";
 $page = "cart";
 ?>
