@@ -7,7 +7,12 @@ $title = "Order detail";
 $page = "order_detail";
 
 // only normal user can access this page
-if ($_SESSION["role_id"] != 1) {
+if (
+  $_SESSION["role_id"] != 1
+  || !isset($_SESSION["shipping_phone_number"])
+  || !isset($_SESSION["shipping_fullname"])
+  || !isset($_SESSION["shipping_address"])
+) {
   http_response_code(404);
   include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
   exit();
