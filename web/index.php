@@ -12,7 +12,7 @@ $top_favorite_products = get_top_favorite_products(10);
 
 <?php include_once(dirname(__DIR__) . "/template/header.php") ?>
 
-<div class="product-grid container p-0 mt-5 mb-5">
+<div class="product-grid container p-0 mt-4 mb-5">
   <h1>Newest products</h1>
   <div class="row row-cols-1 row-cols-lg-5 row-cols-md-2 g-4">
     <?php foreach ($newest_product as $product) : ?>
