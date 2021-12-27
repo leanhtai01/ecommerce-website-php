@@ -241,7 +241,7 @@ function get_newest_products($number_of_product)
   global $pdo;
 
   $sql = "SELECT id, product_name, price FROM products ORDER BY create_at DESC "
-       . "LIMIT $number_of_product;";
+    . "LIMIT $number_of_product;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
 
@@ -260,10 +260,35 @@ function search_for_product($keyword)
   global $pdo;
 
   $sql = "SELECT id, product_name, price FROM products "
-       . "WHERE (UPPER(product_name) LIKE UPPER(:keyword)) "
-       . "OR (UPPER(description) LIKE UPPER(:keyword));";
+    . "WHERE (UPPER(product_name) LIKE UPPER(:keyword)) "
+    . "OR (UPPER(description) LIKE UPPER(:keyword));";
   $stmt = $pdo->prepare($sql);
-  $stmt->execute(["keyword" => "%". $keyword . "%"]);
+  $stmt->execute(["keyword" => "%" . $keyword . "%"]);
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Search for product (in product_name and description) given a keyword
+ *
+ * @param string $keyword
+ *
+ * @param int $offset Beginning offset
+ *
+ * @param int $number_of_product Number of product will be retrieved
+ *
+ * @return array Return products corresponding to keyword
+ */
+function search_for_product_limit($keyword, $offset, $number_of_product)
+{
+  global $pdo;
+
+  $sql = "SELECT id, product_name, price FROM products "
+    . "WHERE (UPPER(product_name) LIKE UPPER(:keyword)) "
+    . "OR (UPPER(description) LIKE UPPER(:keyword)) "
+    . "LIMIT $offset, $number_of_product;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["keyword" => "%" . $keyword . "%"]);
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
