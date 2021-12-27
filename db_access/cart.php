@@ -125,7 +125,29 @@ function get_number_of_product_in_cart($account_id)
     . "WHERE account_id = :account_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["account_id" => $account_id]);
-  $result = $stmt->fetch(PDO::FETCH_ASSOC);  
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
   return $result["total"] ? $result["total"] : 0;
+}
+
+/**
+ * Get products in cart
+ *
+ * @param int account_id Account's id
+ *
+ * @return array Return products'info (id, product_name, price, quantity) in
+ * cart of the account
+ */
+function get_products_in_cart($account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT p.id, p.product_name, p.price, c.quantity "
+    . "FROM products p INNER JOIN carts c "
+    . "ON p.id = c.product_id "
+    . "WHERE c.account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
