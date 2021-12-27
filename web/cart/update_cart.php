@@ -38,7 +38,7 @@ if (isset($_POST["update_btn"])) {
 <div class="text-center login-form">
   <form action="" method="post">
     <div class="form-floating mb-3 mt-4">
-      <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Product quantity" required autofocus>
+      <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Product quantity" required autofocus value="<?php echo get_product_quantity_in_cart($account_id, $product_id); ?>">
       <label for="quantity">Product quantity</label>
     </div>
     <div class="col-md-12 mt-4">
