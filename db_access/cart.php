@@ -175,3 +175,21 @@ function remove_product_from_cart($account_id, $product_id)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Empty cart
+ *
+ * @param int $account_id Account's id
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function empty_cart($account_id)
+{
+  global $pdo;
+
+  $sql = "DELETE FROM carts WHERE account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+
+  return $stmt->rowCount() > 0;
+}
