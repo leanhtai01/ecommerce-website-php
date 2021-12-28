@@ -52,3 +52,23 @@ function create_order($order_info)
 
   return $stmt->rowCount() ? $pdo->lastInsertId() : false;
 }
+
+/**
+ * Create order detail
+ *
+ * @param array $order_detail_info Order detail's information (order_id,
+ * product_id, quantity).
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function create_order_detail($order_detail_info)
+{
+  global $pdo;
+
+  $sql = "INSERT INTO order_details (order_id, product_id, quantity) VALUES "
+       . "(:order_id, :product_id, :quantity);";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($order_detail_info);
+
+  return $stmt->rowCount() > 0;
+}
