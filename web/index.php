@@ -8,6 +8,7 @@ $page = "index";
 
 $newest_product = get_newest_products(10);
 $top_favorite_products = get_top_favorite_products(10);
+$top_sales_products = get_top_sales_products(10);
 ?>
 
 <?php include_once(dirname(__DIR__) . "/template/header.php") ?>
@@ -16,6 +17,22 @@ $top_favorite_products = get_top_favorite_products(10);
   <h1>Newest products</h1>
   <div class="row row-cols-1 row-cols-lg-5 row-cols-md-2 g-4">
     <?php foreach ($newest_product as $product) : ?>
+      <div class="col">
+        <div class="card product-card">
+          <img class="product-img" src="<?php echo get_first_product_image_source($product["id"]); ?>" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="product-name card-title"><a class="stretched-link" href="<?php echo $host_url; ?>/product/product_detail.php?id=<?php echo $product["id"]; ?>"><?php echo $product["product_name"]; ?></a></h5>
+            <h4 class="card-text text-danger">VND <?php echo number_format($product["price"], 2); ?></h4>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <br />
+  <hr style="height:4px; width:100%; border-width:0; color:black; background-color:black">
+  <h1>Top sales products</h1>
+  <div class="row row-cols-1 row-cols-lg-5 row-cols-md-2 g-4">
+    <?php foreach ($top_sales_products as $product) : ?>
       <div class="col">
         <div class="card product-card">
           <img class="product-img" src="<?php echo get_first_product_image_source($product["id"]); ?>" class="card-img-top" alt="...">
