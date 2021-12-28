@@ -80,7 +80,9 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
   <div class="row mt-4">
     <div class="col-md-1"></div>
     <div class="col-md-10 text-end">
-      <a class="btn btn-lg btn-primary" href="">Checkout</a>
+      <form action="<?php echo $host_url . "/order/checkout.php"; ?>" method="post">
+        <button class="btn btn-lg btn-primary" name="checkout_btn" id="checkout_btn" type="submit">Checkout</button>
+      </form>      
     </div>
     <div class="col-md-1"></div>
   </div>
