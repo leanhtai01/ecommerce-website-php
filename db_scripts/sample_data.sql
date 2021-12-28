@@ -32,7 +32,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (7,45,1),(7,47,1),(7,50,1);
+INSERT INTO `carts` VALUES (3,47,1),(3,50,1),(7,26,1),(7,47,1),(7,48,1),(7,50,1);
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,7 +52,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `favorites` WRITE;
 /*!40000 ALTER TABLE `favorites` DISABLE KEYS */;
-INSERT INTO `favorites` VALUES (2,1),(2,5),(2,8),(2,25),(2,26),(2,27),(3,1),(3,27),(3,45),(4,1),(4,5),(4,20),(5,7),(6,7),(7,26),(7,44),(7,47),(7,50),(9,7),(12,7),(19,20),(21,9);
+INSERT INTO `favorites` VALUES (2,1),(2,5),(2,8),(2,25),(2,26),(2,27),(3,1),(3,20),(3,27),(3,42),(3,43),(3,45),(4,1),(4,5),(4,20),(5,7),(6,7),(7,26),(7,44),(7,47),(7,50),(9,7),(12,7),(19,20),(21,9);
 /*!40000 ALTER TABLE `favorites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-27  9:34:54
+-- Dump completed on 2021-12-28  8:03:19
