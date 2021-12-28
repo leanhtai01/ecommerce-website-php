@@ -13,6 +13,9 @@ if ($_SESSION["role_id"] != 1) {
 $title = "Cart";
 $page = "cart";
 
+$_SESSION["number_of_product_in_cart"]
+  = get_number_of_product_in_cart($_SESSION["account_info"]["id"]);
+
 $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
 ?>
 
