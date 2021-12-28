@@ -65,6 +65,7 @@ CREATE TABLE products (
   price DECIMAL(15, 2) NOT NULL,
   quantity_in_stock INT NOT NULL,
   create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  is_deleted TINYINT DEFAULT 0,
   CONSTRAINT pk_products PRIMARY KEY (id)
 );
 
