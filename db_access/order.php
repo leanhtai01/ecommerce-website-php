@@ -20,3 +20,35 @@ function get_payment_total($account_id)
 
   return $stmt->fetchColumn();
 }
+
+/**
+ * Create new order
+ *
+ * @param array $order_info Order's information (account_id, ship_name,
+ * ship_phone_number, ship_address, status)
+ *
+ * @return int|false Return last insert id on success, false otherwise
+ */
+function create_order($order_info)
+{
+  global $pdo;
+
+  $sql = "INSERT INTO orders ("
+       . "account_id,"
+       . "ship_name,"
+       . "ship_phone_number,"
+       . "ship_address,"
+       . "status"
+       . ") VALUES "
+       . "("
+       . ":account_id,"
+       . ":ship_name,"
+       . ":ship_phone_number,"
+       . ":ship_address,"
+       . ":status"
+       . ");";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute($order_info);
+
+  return $stmt->rowCount() ? $pdo->lastInsertId() : false;
+}
