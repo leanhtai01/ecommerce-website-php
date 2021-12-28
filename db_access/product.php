@@ -292,3 +292,49 @@ function search_for_product_limit($keyword, $offset, $number_of_product)
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Get current quantity in stock
+ *
+ * @param int $product_id Product's id
+ *
+ * @return int Return current quantity in stock
+ */
+function get_current_quantity_in_stock($product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT quantity_in_stock FROM products WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $product_id]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  return $result["quantity_in_stock"];
+}
+
+/**
+ * Update product's quantity in stock
+ *
+ * @param int $product_id Product's id
+ *
+ * @param int $amount Amount to increase/decrease
+ *
+ * @return bool Return true if update success, false otherwise
+ */
+function update_product_quantity_in_stock($product_id, $amount)
+{
+  global $pdo;
+
+  // calculate new quantity_in_stock
+  $new_quantity_in_stock = get_current_quantity_in_stock($product_id) + $amount;
+
+  $sql = "UPDATE products SET quantity_in_stock = :quantity_in_stock "
+       . "WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "id" => $product_id,
+    "quantity_in_stock" => $new_quantity_in_stock
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
