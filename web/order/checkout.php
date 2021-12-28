@@ -53,15 +53,17 @@ if ($order_id) {
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
-<!-- Display error message -->
-<?php if (isset($_SESSION["error_code"])) : ?>
-  <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
-    <?php
-    echo $_SESSION["error_message"];
-    unset($_SESSION["error_code"]);
-    unset($_SESSION["error_message"]);
-    ?>
-  </div>
-<?php endif; ?>
+<div class="text-center">
+  <!-- Display error message -->
+  <?php if (isset($_SESSION["error_code"])) : ?>
+    <div class="alert <?php echo $_SESSION["error_code"] == 0 ? "alert-success" : "alert-danger"; ?>" role="alert">
+      <?php
+      echo $_SESSION["error_message"];
+      unset($_SESSION["error_code"]);
+      unset($_SESSION["error_message"]);
+      ?>
+    </div>
+  <?php endif; ?>
+</div>
 
 <?php include_once(dirname(dirname(__DIR__)) . "/template/footer.php") ?>
