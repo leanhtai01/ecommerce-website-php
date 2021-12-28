@@ -2,6 +2,7 @@
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 
 $title = "Checkout";
 $page = "checkout";
@@ -43,7 +44,10 @@ if ($order_id) {
     ];
 
     if (create_order_detail($order_detail_info)) {
+      update_product_quantity_in_stock($product["id"], -$product["quantity"]);
       empty_cart($account_id);
+      $_SESSION["number_of_product_in_cart"] = 0;
+
       $_SESSION["error_code"] = 0;
       $_SESSION["error_message"] = "Order created successfully!";
     }
