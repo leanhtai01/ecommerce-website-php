@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT,
   account_id INT NOT NULL,
-  order_date DATETIME NOT NULL,
+  order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
   ship_name VARCHAR(100),
   ship_phone_number VARCHAR(20),
   ship_address VARCHAR(255),
