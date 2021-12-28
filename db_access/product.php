@@ -329,7 +329,7 @@ function update_product_quantity_in_stock($product_id, $amount)
   $new_quantity_in_stock = get_current_quantity_in_stock($product_id) + $amount;
 
   $sql = "UPDATE products SET quantity_in_stock = :quantity_in_stock "
-       . "WHERE id = :id;";
+    . "WHERE id = :id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
     "id" => $product_id,
@@ -337,4 +337,28 @@ function update_product_quantity_in_stock($product_id, $amount)
   ]);
 
   return $stmt->rowCount() > 0;
+}
+
+/**
+ * Get top sales products
+ *
+ * @param int $number_of_product Number of product to return
+ *
+ * @return array Return a number of top sales product
+ */
+function get_top_sales_products($number_of_product)
+{
+  global $pdo;
+
+  $sql = "SELECT p.id, p.product_name, p.price "
+    . "FROM products p INNER JOIN order_details o "
+    . "ON p.id = o.product_id "
+    . "WHERE p.is_deleted = 0 "
+    . "GROUP BY p.id "
+    . "ORDER BY SUM(o.quantity) DESC "
+    . "LIMIT $number_of_product;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
