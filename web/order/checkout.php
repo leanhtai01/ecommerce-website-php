@@ -19,6 +19,7 @@ if (
   exit();
 }
 
+$is_order_created_success = true;
 $account_id = $_SESSION["account_info"]["id"];
 $ship_name = $_SESSION["shipping_fullname"];
 $ship_phone_number = $_SESSION["shipping_phone_number"];
@@ -47,11 +48,13 @@ if ($order_id) {
       update_product_quantity_in_stock($product["id"], -$product["quantity"]);
       empty_cart($account_id);
       $_SESSION["number_of_product_in_cart"] = 0;
-
-      $_SESSION["error_code"] = 0;
-      $_SESSION["error_message"] = "Order created successfully!";
     }
   }
+}
+
+if ($is_order_created_success) {
+  $_SESSION["error_code"] = 0;
+  $_SESSION["error_message"] = "Order created successfully!";
 }
 ?>
 
