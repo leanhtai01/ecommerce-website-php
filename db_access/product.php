@@ -32,6 +32,40 @@ function get_product_list()
 }
 
 /**
+ * Get list of product include category's name
+ *
+ * @param int $offset Beginning offset
+ *
+ * @param int $number_of_products Number of products will be retrieved
+ *
+ * @return array|false Return array containt products's information or false if
+ * failed.
+ */
+function get_product_list_limit($offset, $number_of_products)
+{
+  global $pdo;
+
+  $sql = "SELECT "
+    . "p.id,"
+    . "p.category_id,"
+    . "c.category_name,"
+    . "p.product_name,"
+    . "p.description,"
+    . "p.price,"
+    . "p.quantity_in_stock,"
+    . "p.create_at "
+    . "FROM products p "
+    . "INNER JOIN categories c "
+    . "ON p.category_id = c.id "
+    . "LIMIT $offset, $number_of_products;";
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
  * Get number of products
  *
  * @return int Return number of products
