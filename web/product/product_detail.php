@@ -142,7 +142,7 @@ if (isset($_POST["add_to_cart_btn"])) {
         </div>
       </div>
 
-      <?php if (isset($_SESSION["account_info"])) : ?>
+      <?php if (isset($_SESSION["account_info"]) && !is_product_deleted($_GET["id"])) : ?>
         <div class="container mt-4">
           <div class="row">
             <?php
