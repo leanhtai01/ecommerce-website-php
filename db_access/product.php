@@ -374,9 +374,9 @@ function delete_product($product_id)
 {
   global $pdo;
 
-  $sql = "UPDATE products SET is_deleted = 1 WHERE product_id = :product_id";
+  $sql = "UPDATE products SET is_deleted = 1 WHERE id = :id";
   $stmt = $pdo->prepare($sql);
-  $stmt->execute(["product_id" => $product_id]);
+  $stmt->execute(["id" => $product_id]);
 
   return $stmt->rowCount() > 0;
 }
