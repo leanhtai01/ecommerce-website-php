@@ -399,3 +399,21 @@ function is_product_deleted($product_id)
 
   return $result["is_deleted"] == 1 ? true : false;
 }
+
+/**
+ * Restore a deleted product
+ *
+ * @param int $product_id Product's id
+ *
+ * @return boot Return true on success, false otherwise
+ */
+function restore_product($product_id)
+{
+  global $pdo;
+
+  $sql = "UPDATE products SET is_deleted = 0 WHERE id = :id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $product_id]);
+
+  return $stmt->rowCount() > 0;
+}
