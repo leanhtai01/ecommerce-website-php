@@ -240,7 +240,9 @@ function get_newest_products($number_of_product)
 {
   global $pdo;
 
-  $sql = "SELECT id, product_name, price FROM products ORDER BY create_at DESC "
+  $sql = "SELECT id, product_name, price FROM products "
+    . "WHERE is_deleted = 0 "
+    . "ORDER BY create_at DESC "
     . "LIMIT $number_of_product;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
