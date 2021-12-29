@@ -30,14 +30,7 @@ $accounts = get_user_accounts_info_limit($start_offset, $records_per_page);
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
 <h1 class="text-center">Account Management</h1>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <button class="btn btn-primary">Add account</button>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
+<div class="container-fluid">  
   <div class="row mt-4">
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -49,9 +42,7 @@ $accounts = get_user_accounts_info_limit($start_offset, $records_per_page);
             <th>Email</th>
             <th>Phone number</th>
             <th>Address</th>
-            <th>Is Verified</th>
-            <th></th>
-            <th></th>
+            <th>Is Verified</th>            
           </tr>
         </thead>
         <tbody>
@@ -70,9 +61,7 @@ $accounts = get_user_accounts_info_limit($start_offset, $records_per_page);
                   echo "Yes";
                 }
                 ?>
-              </td>
-              <td><a class="btn btn-info" href="">Edit</a></td>
-              <td><a class="btn btn-danger" href="">Delete</a></td>
+              </td>              
             </tr>
           <?php endforeach; ?>
         </tbody>
