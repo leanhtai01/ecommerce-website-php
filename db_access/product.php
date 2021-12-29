@@ -362,3 +362,21 @@ function get_top_sales_products($number_of_product)
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Mark a product as deleted
+ *
+ * @param int $product_id Product's id
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function delete_product($product_id)
+{
+  global $pdo;
+
+  $sql = "UPDATE products SET is_deleted = 1 WHERE product_id = :product_id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["product_id" => $product_id]);
+
+  return $stmt->rowCount() > 0;
+}
