@@ -32,6 +32,22 @@ function get_product_list()
 }
 
 /**
+ * Get number of products
+ *
+ * @return int Return number of products
+ */
+function get_number_of_products()
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM products;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchColumn();
+}
+
+/**
  * Add product's information to table products
  *
  * @param array $product_info Product's information (category_id, product_name,
