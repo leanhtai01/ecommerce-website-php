@@ -60,6 +60,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="<?php echo $host_url; ?>/account/index.php">Profile settings</a></li>
                   <?php if ($_SESSION["role_id"] == 0) : ?>
+                    <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/order_manager.php">Order Management</a></li>
                     <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/product_manager.php">Product Management</a></li>
                     <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/account_manager.php">Account Management</a></li>
                   <?php endif; ?>

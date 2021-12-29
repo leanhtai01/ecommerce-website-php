@@ -11,10 +11,10 @@ function get_payment_total($account_id)
   global $pdo;
 
   $sql = "SELECT SUM(c.quantity * p.price) "
-       . "FROM carts c INNER JOIN products p "
-       . "ON c.product_id = p.id "
-       . "WHERE c.account_id = :account_id "
-       . "GROUP BY c.account_id;";
+    . "FROM carts c INNER JOIN products p "
+    . "ON c.product_id = p.id "
+    . "WHERE c.account_id = :account_id "
+    . "GROUP BY c.account_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["account_id" => $account_id]);
 
@@ -34,19 +34,19 @@ function create_order($order_info)
   global $pdo;
 
   $sql = "INSERT INTO orders ("
-       . "account_id,"
-       . "ship_name,"
-       . "ship_phone_number,"
-       . "ship_address,"
-       . "status"
-       . ") VALUES "
-       . "("
-       . ":account_id,"
-       . ":ship_name,"
-       . ":ship_phone_number,"
-       . ":ship_address,"
-       . ":status"
-       . ");";
+    . "account_id,"
+    . "ship_name,"
+    . "ship_phone_number,"
+    . "ship_address,"
+    . "status"
+    . ") VALUES "
+    . "("
+    . ":account_id,"
+    . ":ship_name,"
+    . ":ship_phone_number,"
+    . ":ship_address,"
+    . ":status"
+    . ");";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($order_info);
 
@@ -66,9 +66,47 @@ function create_order_detail($order_detail_info)
   global $pdo;
 
   $sql = "INSERT INTO order_details (order_id, product_id, quantity) VALUES "
-       . "(:order_id, :product_id, :quantity);";
+    . "(:order_id, :product_id, :quantity);";
   $stmt = $pdo->prepare($sql);
   $stmt->execute($order_detail_info);
 
   return $stmt->rowCount() > 0;
+}
+
+/**
+ * Get number of orders
+ *
+ * @return int Return number of orders
+ */
+function get_number_of_orders()
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM orders;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+
+  return $stmt->fetchColumn();
+}
+
+/**
+ * Get a number of orders
+ *
+ * @param int $offset Beginning offset
+ *
+ * @param int $number_of_order Number of orders to return
+ *
+ * @return array Return a number of orders
+ */
+function get_order_list_limit($offset, $number_of_order)
+{
+  global $pdo;
+
+  $sql = "SELECT id, ship_name, ship_phone_number, ship_address, status "
+    . "FROM orders "
+    . "LIMIT $offset, $number_of_order;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
