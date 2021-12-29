@@ -44,7 +44,7 @@ $products = get_product_list();
         </thead>
         <tbody>
           <?php foreach ($products as $product) : ?>
-            <tr>
+            <tr <?php echo is_product_deleted($product["id"]) ? "class = 'table-danger'" : "" ?>>
               <td><?php echo $product["id"] ?></td>
               <td><?php echo $product["category_name"] ?></td>
               <td><?php echo $product["product_name"] ?></td>
@@ -53,7 +53,7 @@ $products = get_product_list();
               <td><?php echo $product["quantity_in_stock"] ?></td>
               <td><?php echo $product["create_at"] ?></td>
               <td><a class="btn btn-info" href="<?php echo $host_url; ?>/admin/edit_product.php?id=<?php echo $product["id"] ?>">Edit</a></td>
-              <td><a class="btn btn-danger" href="">Delete</a></td>
+              <td><a class="btn btn-danger" href="<?php echo $host_url . "/admin/delete_product.php?id=" . $product["id"]; ?>">Delete</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
