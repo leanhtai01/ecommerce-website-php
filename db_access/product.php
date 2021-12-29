@@ -286,8 +286,8 @@ function search_for_product_limit($keyword, $offset, $number_of_product)
   global $pdo;
 
   $sql = "SELECT id, product_name, price FROM products "
-    . "WHERE (UPPER(product_name) LIKE UPPER(:keyword)) "
-    . "OR (UPPER(description) LIKE UPPER(:keyword)) "
+    . "WHERE ((UPPER(product_name) LIKE UPPER(:keyword)) "
+    . "OR (UPPER(description) LIKE UPPER(:keyword))) AND is_deleted = 0 "
     . "LIMIT $offset, $number_of_product;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["keyword" => "%" . $keyword . "%"]);
