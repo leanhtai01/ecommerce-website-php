@@ -179,6 +179,7 @@ function get_top_favorite_products($number_of_product)
   $sql = "SELECT p.id, p.product_name, p.price "
     . "FROM products p INNER JOIN favorites f "
     . "ON p.id = f.product_id "
+    . "WHERE p.is_deleted = 0 "
     . "GROUP BY p.id "
     . "ORDER BY COUNT(p.id) DESC "
     . "LIMIT $number_of_product;";
