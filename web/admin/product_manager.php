@@ -21,7 +21,7 @@ $products = get_product_list();
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-      <a class="btn btn-primary" href="<?php echo $host_url; ?>/admin/add_product.php">Add product</a>      
+      <a class="btn btn-primary" href="<?php echo $host_url; ?>/admin/add_product.php">Add product</a>
     </div>
     <div class="col-md-1"></div>
   </div>
@@ -52,8 +52,13 @@ $products = get_product_list();
               <td><?php echo $product["price"] ?></td>
               <td><?php echo $product["quantity_in_stock"] ?></td>
               <td><?php echo $product["create_at"] ?></td>
-              <td><a class="btn btn-info" href="<?php echo $host_url; ?>/admin/edit_product.php?id=<?php echo $product["id"] ?>">Edit</a></td>
-              <td><a class="btn btn-danger" href="<?php echo $host_url . "/admin/delete_product.php?id=" . $product["id"]; ?>">Delete</a></td>
+              <?php if (!is_product_deleted($product["id"])) : ?>
+                <td><a class="btn btn-info" href="<?php echo $host_url; ?>/admin/edit_product.php?id=<?php echo $product["id"] ?>">Edit</a></td>
+                <td><a class="btn btn-danger" href="<?php echo $host_url . "/admin/delete_product.php?id=" . $product["id"]; ?>">Delete</a></td>
+              <?php else : ?>
+                <td></td>
+                <td><a class="btn btn-success" href="<?php echo $host_url . "/admin/restore_product.php?id=" . $product["id"]; ?>">Restore</a></td>
+              <?php endif; ?>
             </tr>
           <?php endforeach; ?>
         </tbody>
