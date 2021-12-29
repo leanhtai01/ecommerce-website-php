@@ -15,9 +15,6 @@ if (
 }
 
 if (restore_product($_GET["id"])) {
-  $_SESSION["error_code"] = 0;
-  $_SESSION["error_message"] = "Product restored successfully!";
-
   header("Location: " . $host_url . "/admin/product_manager.php");
 } else {
   $_SESSION["error_code"] = 1;
