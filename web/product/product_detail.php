@@ -142,7 +142,7 @@ if (isset($_POST["add_to_cart_btn"])) {
         </div>
       </div>
 
-      <?php if (isset($_SESSION["account_info"]) && !is_product_deleted($_GET["id"])) : ?>
+      <?php if (isset($_SESSION["account_info"]) && !is_product_deleted($_GET["id"]) && $_SESSION["role_id"] == 1) : ?>
         <div class="container mt-4">
           <div class="row">
             <?php
@@ -191,10 +191,10 @@ if (isset($_POST["add_to_cart_btn"])) {
       </p>
     </div>
   </div>
-  <div class="row mt-5">
-    <h2>Comments</h2>
-  </div>
-  <?php if (isset($_SESSION["account_info"])) : ?>
+  <?php if (isset($_SESSION["account_info"]) && $_SESSION["role_id"] == 1) : ?>
+    <div class="row mt-5">
+      <h2>Comments</h2>
+    </div>
     <?php if (!is_rated($_SESSION["account_info"]["id"], $_GET["id"])) : ?>
       <div class="row">
         <form action="" method="post">
