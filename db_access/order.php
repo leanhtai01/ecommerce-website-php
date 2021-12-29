@@ -110,3 +110,26 @@ function get_order_list_limit($offset, $number_of_order)
   
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Update order status
+ *
+ * @param int $order_id Order's id
+ *
+ * @param string $status Order's status
+ *
+ * @return bool Return true on success, false otherwise
+ */
+function update_order_status($order_id, $status)
+{
+  global $pdo;
+
+  $sql = "UPDATE orders SET status = :status WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "id" => $order_id,
+    "status" => $status
+  ]);
+
+  return $stmt->rowCount() > 0;
+}
