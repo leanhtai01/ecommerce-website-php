@@ -380,3 +380,22 @@ function delete_product($product_id)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Check whether product is marked delete
+ *
+ * @param int $product_id Product's id
+ *
+ * @return bool Return true if product is deleted, false otherwise
+ */
+function is_product_deleted($product_id)
+{
+  global $pdo;
+
+  $sql = "SELECT is_deleted FROM products WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $product_id]);
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  return $result["is_deleted"] == 1 ? true : false;
+}
