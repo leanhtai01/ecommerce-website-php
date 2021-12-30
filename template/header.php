@@ -55,6 +55,10 @@
                 <li class="nav-item">
                   <a class="nav-link <?php echo $page == "order_history" ? "active" : "" ?>" href="<?php echo $host_url . "/order/order_history.php?account_id=" . $_SESSION["account_info"]["id"]; ?>">Order history</a>
                 </li>
+              <?php elseif ($_SESSION["role_id"] == 0) : ?>
+                <li class="nav-item">
+                  <a class="nav-link <?php echo $page == "revenue_statistic" ? "active" : "" ?>" href="<?php echo $host_url . "/admin/revenue_statistic.php"; ?>">Revenue statistics</a>
+                </li>
               <?php endif; ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
