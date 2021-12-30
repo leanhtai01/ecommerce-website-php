@@ -59,18 +59,22 @@
                 <li class="nav-item">
                   <a class="nav-link <?php echo $page == "revenue_statistic" ? "active" : "" ?>" href="<?php echo $host_url . "/admin/revenue_statistic.php"; ?>">Revenue statistics</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link <?php echo $page == "order_manager" ? "active" : "" ?>" href="<?php echo $host_url . "/admin/order_manager.php"; ?>">Order manager</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link <?php echo $page == "product_manager" ? "active" : "" ?>" href="<?php echo $host_url . "/admin/product_manager.php"; ?>">Product manager</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link <?php echo $page == "account_manager" ? "active" : "" ?>" href="<?php echo $host_url . "/admin/account_manager.php"; ?>">Account manager</a>
+                </li>
               <?php endif; ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <?php echo $_SESSION["account_info"]["fullname"] ?>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="<?php echo $host_url; ?>/account/index.php">Profile settings</a></li>
-                  <?php if ($_SESSION["role_id"] == 0) : ?>
-                    <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/order_manager.php">Order Management</a></li>
-                    <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/product_manager.php">Product Management</a></li>
-                    <li><a class="dropdown-item" href="<?php echo $host_url; ?>/admin/account_manager.php">Account Management</a></li>
-                  <?php endif; ?>
+                  <li><a class="dropdown-item" href="<?php echo $host_url; ?>/account/index.php">Profile settings</a></li>                  
                   <li>
                     <hr class="dropdown-divider">
                   </li>
