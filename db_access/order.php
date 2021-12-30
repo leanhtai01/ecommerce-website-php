@@ -231,3 +231,27 @@ function get_orders_by_account_id_limit($account_id, $offset, $number_of_order)
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Check whether order belong to account
+ *
+ * @param int $order_id Order's id
+ *
+ * @param int $account_id Account's id
+ *
+ * @return bool Return true if order belong to account, false otherwise
+ */
+function is_order_belong_to_account($order_id, $account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM orders "
+       . "WHERE id = :id AND account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    "id" => $order_id,
+    "account_id" => $account_id
+  ]);
+
+  return $stmt->fetchColumn();
+}
