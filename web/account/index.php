@@ -8,9 +8,7 @@ $error_code = null;
 $error_message = "";
 
 // redirect user to suitable location
-if ($_SESSION["role_id"] == 0) {
-  header("Location: " . $host_url . "/admin/index.php");
-} elseif ($_SESSION["role_id"] == 2) {
+if ($_SESSION["role_id"] == 2) {
   header("Location: " . $host_url . "/account/login.php");
 }
 

@@ -19,11 +19,7 @@ if (isset($_POST["login_btn"])) {
       = get_number_of_product_in_cart($_SESSION["account_info"]["id"]);
 
     // redirect user to suitable location
-    if ($_SESSION["role_id"] == 0) {
-      header("Location: " . $host_url . "/admin/index.php");
-    } elseif ($_SESSION) {
-      header("Location: " . $host_url . "/index.php");
-    }
+    header("Location: " . $host_url . "/index.php");
   } elseif ($account_info === false) {
     $error = "Invalid email or password!";
   } elseif ($account_info === 0) {
