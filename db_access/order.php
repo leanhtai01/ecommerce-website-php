@@ -107,7 +107,7 @@ function get_order_list_limit($offset, $number_of_order)
     . "LIMIT $offset, $number_of_order;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
-  
+
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -147,15 +147,36 @@ function get_order_info($order_id)
   global $pdo;
 
   $sql = "SELECT "
-       . "ship_name,"
-       . "ship_phone_number,"
-       . "ship_address,"
-       . "order_date,"
-       . "status "
-       . "FROM orders "
-       . "WHERE id = :id;";
+    . "ship_name,"
+    . "ship_phone_number,"
+    . "ship_address,"
+    . "order_date,"
+    . "status "
+    . "FROM orders "
+    . "WHERE id = :id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["id" => $order_id]);
 
   return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Get products in order detail
+ *
+ * @param int $order_id Order's id
+ *
+ * @return array Product's information from given order_id
+ */
+function get_products_in_order_detail($order_id)
+{
+  global $pdo;
+
+  $sql = "SELECT p.id, p.product_name, od.quantity, p.price "
+    . "FROM products p INNER JOIN order_details od "
+    . "ON p.id = od.product_id "
+    . "WHERE od.order_id = :order_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["order_id" => $order_id]);
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
