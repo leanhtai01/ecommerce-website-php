@@ -191,12 +191,43 @@ function get_payment_total_history($order_id)
   global $pdo;
 
   $sql = "SELECT SUM(p.price * od.quantity) "
-       . "FROM products p INNER JOIN order_details od "
-       . "ON p.id = od.product_id "
-       . "WHERE od.order_id = :order_id "
-       . "GROUP BY od.order_id;";
+    . "FROM products p INNER JOIN order_details od "
+    . "ON p.id = od.product_id "
+    . "WHERE od.order_id = :order_id "
+    . "GROUP BY od.order_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["order_id" => $order_id]);
 
   return $stmt->fetchColumn();
+}
+
+/**
+ * Get orders by account_id
+ *
+ * @param int $account_id Account's id
+ *
+ * @param int $offset Beginning offset
+ *
+ * @param int $number_of_order Number of order to return
+ *
+ * @return array Return order's information for given account_id
+ */
+function get_orders_by_account_id_limit($account_id, $offset, $number_of_order)
+{
+  global $pdo;
+
+  $sql = "SELECT "
+    . "id,"
+    . "ship_name,"
+    . "ship_phone_number,"
+    . "ship_address,"
+    . "order_date,"
+    . "status "
+    . "FROM orders "
+    . "WHERE account_id = :account_id "
+    . "LIMIT $offset, $number_of_order;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -52,6 +52,9 @@
                 <li class="nav-item">
                   <a class="nav-link <?php echo $page == "favorite" ? "active" : "" ?>" href="<?php echo $host_url; ?>/favorite/favorite.php">Favorite products</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link <?php echo $page == "order_history" ? "active" : "" ?>" href="<?php echo $host_url . "/order/order_history.php?account_id=" . $_SESSION["account_info"]["id"]; ?>">Order history</a>
+                </li>
               <?php endif; ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
