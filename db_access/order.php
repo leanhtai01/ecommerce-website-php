@@ -133,3 +133,29 @@ function update_order_status($order_id, $status)
 
   return $stmt->rowCount() > 0;
 }
+
+/**
+ * Get order's information
+ *
+ * @param int $order_id Order's id
+ *
+ * @return array Return Order's information (ship_name, ship_phone_number,
+ * ship_address, order_date, status)
+ */
+function get_order_info($order_id)
+{
+  global $pdo;
+
+  $sql = "SELECT "
+       . "ship_name,"
+       . "ship_phone_number,"
+       . "ship_address,"
+       . "order_date,"
+       . "status "
+       . "FROM orders "
+       . "WHERE id = :id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["id" => $order_id]);
+
+  return $stmt->fetch(PDO::FETCH_ASSOC);
+}
