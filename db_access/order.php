@@ -180,3 +180,23 @@ function get_products_in_order_detail($order_id)
 
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Get payment total history
+ *
+ * @param int $order_id Order's id
+ */
+function get_payment_total_history($order_id)
+{
+  global $pdo;
+
+  $sql = "SELECT SUM(p.price * od.quantity) "
+       . "FROM products p INNER JOIN order_details od "
+       . "ON p.id = od.product_id "
+       . "WHERE od.order_id = :order_id "
+       . "GROUP BY od.order_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["order_id" => $order_id]);
+
+  return $stmt->fetchColumn();
+}

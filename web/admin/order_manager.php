@@ -55,7 +55,7 @@ $orders = get_order_list_limit($start_offset, $records_per_page);
               <td><?php echo $order["ship_address"]; ?></td>
               <td><?php echo $order["status"]; ?></td>
               <td><a class="btn btn-primary" href="<?php echo $host_url . "/admin/update_order_status.php?id=" . $order["id"]; ?>">Update status</a></td>
-              <td><a class="btn btn-secondary" href="">View detail</a></td>
+              <td><a class="btn btn-secondary" href="<?php echo $host_url . "/order/order_detail_history.php?order_id=" . $order["id"] ?>">View detail</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
