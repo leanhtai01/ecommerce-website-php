@@ -1,0 +1,70 @@
+% Created 2021-12-31 Fri 17:19
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue}
+\author{Lê Anh Tài}
+\date{\today}
+\title{Authorization}
+\hypersetup{
+ pdfauthor={Lê Anh Tài},
+ pdftitle={Authorization},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Page/script authorization}
+\label{sec:orgc949eda}
+\begin{center}
+\begin{tabular}{llll}
+Page/script & Admin & Normal user & Guest\\
+\hline
+account/forgot\_password.php &  &  & x\\
+account/index.php & x & x & \\
+account/login.php &  &  & x\\
+account/logout.php & x & x & \\
+account/register.php &  &  & x\\
+account/resend\_validation\_email.php &  &  & x\\
+account/reset\_password.php &  &  & x\\
+account/verify\_account.php &  &  & x\\
+admin/account\_manager.php & x &  & \\
+admin/add\_product.php & x &  & \\
+admin/delete\_product.php & x &  & \\
+admin/edit\_product.php & x &  & \\
+admin/index.php & x &  & \\
+admin/order\_manager.php & x &  & \\
+admin/restore\_product.php & x &  & \\
+admin/revenue\_statistic.php & x &  & \\
+admin/update\_order\_status.php & x &  & \\
+cart/cart.php &  & x & \\
+cart/remove\_product.php &  & x & \\
+cart/update\_cart.php &  & x & \\
+favorite/favorite.php &  & x & \\
+favorite/remove\_favorite.php &  & x & \\
+order/checkout.php &  & x & \\
+order/order\_detail.php &  & x & \\
+order/order\_detail\_history.php & x & x & \\
+order/order\_history.php &  & x & \\
+order/shipping\_info.php &  & x & \\
+product/product\_detail.php & x & x & x\\
+product/search\_for\_product.php & x & x & x\\
+\end{tabular}
+\end{center}
+\end{document}

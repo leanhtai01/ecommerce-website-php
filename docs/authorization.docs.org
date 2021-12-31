@@ -1,0 +1,34 @@
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+#+TITLE: Authorization
+* Page/script authorization
+| Page/script                                       | Admin | Normal user | Guest |
+|---------------------------------------------------+-------+-------------+-------|
+| account/forgot\under{}password.php                |       |             | x     |
+| account/index.php                                 | x     | x           |       |
+| account/login.php                                 |       |             | x     |
+| account/logout.php                                | x     | x           |       |
+| account/register.php                              |       |             | x     |
+| account/resend\under{}validation\under{}email.php |       |             | x     |
+| account/reset\under{}password.php                 |       |             | x     |
+| account/verify\under{}account.php                 |       |             | x     |
+| admin/account\under{}manager.php                  | x     |             |       |
+| admin/add\under{}product.php                      | x     |             |       |
+| admin/delete\under{}product.php                   | x     |             |       |
+| admin/edit\under{}product.php                     | x     |             |       |
+| admin/index.php                                   | x     |             |       |
+| admin/order\under{}manager.php                    | x     |             |       |
+| admin/restore\under{}product.php                  | x     |             |       |
+| admin/revenue\under{}statistic.php                | x     |             |       |
+| admin/update\under{}order\under{}status.php       | x     |             |       |
+| cart/cart.php                                     |       | x           |       |
+| cart/remove\under{}product.php                    |       | x           |       |
+| cart/update\under{}cart.php                       |       | x           |       |
+| favorite/favorite.php                             |       | x           |       |
+| favorite/remove\under{}favorite.php               |       | x           |       |
+| order/checkout.php                                |       | x           |       |
+| order/order\under{}detail.php                     |       | x           |       |
+| order/order\under{}detail\under{}history.php      | x     | x           |       |
+| order/order\under{}history.php                    |       | x           |       |
+| order/shipping\under{}info.php                    |       | x           |       |
+| product/product\under{}detail.php                 | x     | x           | x     |
+| product/search\under{}for\under{}product.php      | x     | x           | x     |
