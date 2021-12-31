@@ -1,6 +1,7 @@
 #+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
 #+TITLE: Authorization
-* Page/script authorization
+* Pages/scripts authorization
+  Authorization on public directory (i.e. web directory)
 | Page/script                                       | Admin | Normal user | Guest |
 |---------------------------------------------------+-------+-------------+-------|
 | account/forgot\under{}password.php                |       |             | x     |
@@ -32,3 +33,4 @@
 | order/shipping\under{}info.php                    |       | x           |       |
 | product/product\under{}detail.php                 | x     | x           | x     |
 | product/search\under{}for\under{}product.php      | x     | x           | x     |
+| index.php                                         | x     | x           | x     |

@@ -1,4 +1,4 @@
-% Created 2021-12-31 Fri 17:19
+% Created 2021-12-31 Fri 17:24
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,8 +30,9 @@
 \maketitle
 \tableofcontents
 
-\section{Page/script authorization}
-\label{sec:orgc949eda}
+\section{Pages/scripts authorization}
+\label{sec:org47f618e}
+Authorization on public directory (i.e. web directory)
 \begin{center}
 \begin{tabular}{llll}
 Page/script & Admin & Normal user & Guest\\
@@ -65,6 +66,7 @@ order/order\_history.php &  & x & \\
 order/shipping\_info.php &  & x & \\
 product/product\_detail.php & x & x & x\\
 product/search\_for\_product.php & x & x & x\\
+index.php & x & x & x\\
 \end{tabular}
 \end{center}
 \end{document}
