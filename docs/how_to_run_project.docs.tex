@@ -1,0 +1,90 @@
+% Created 2021-12-31 Fri 16:25
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue}
+\author{Lê Anh Tài}
+\date{\today}
+\title{How to run project}
+\hypersetup{
+ pdfauthor={Lê Anh Tài},
+ pdftitle={How to run project},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Requirement}
+\label{sec:orgfebe192}
+The following guide is for below system:
+\begin{itemize}
+\item OS: Arch Linux
+\item LAMP stack installed
+\item git, composer installed
+\end{itemize}
+\section{Run on remote host}
+\label{sec:org1f0f34a}
+Access: \url{http://leanhtai01.xyz}  
+\section{Run on localhost}
+\label{sec:org1b7fd8e}
+\begin{enumerate}
+\item Clone from project from github:
+\begin{verbatim}
+$ git clone https://github.com/leanhtai01/leanhtai01-ecommerce
+\end{verbatim}
+\item Change directory to project's root directory:
+\begin{verbatim}
+$ cd leanhtai01-ecommerce
+\end{verbatim}
+\item Install project's dependencies:
+\begin{verbatim}
+$ composer update
+\end{verbatim}
+\item Change directory to db\_scripts directory
+\begin{verbatim}
+$ cd db_scripts
+\end{verbatim}
+\item Create database and insert sample data (need root privilege)
+\begin{verbatim}
+$ mysql -u root -p < ecommerce_db.sql
+$ mysql -u root -p < sample_data.sql
+\end{verbatim}
+\item Copy/move project to Apache directory (e.g. public\_html)
+\begin{verbatim}
+$ cd ../../
+$ cp -r leanhtai01-ecommerce ~/public_html
+\end{verbatim}
+\item Set Apache's environment variables as described in
+docs/environment\_variables.docs.org
+\end{enumerate}
+\section{Sample accounts}
+\label{sec:org8d09f59}
+\subsection{Admin}
+\label{sec:orga73f596}
+\begin{itemize}
+\item Email: admin@gmail.com
+\item Password: 123
+\end{itemize}
+\subsection{Normal user:}
+\label{sec:org437fd31}
+\begin{itemize}
+\item Email: votong@yahoo.com.vn
+\item Password: 123
+\end{itemize}
+\end{document}

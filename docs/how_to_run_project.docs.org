@@ -1,0 +1,46 @@
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+#+TITLE: How to run project
+* Requirement
+  The following guide is for below system:
+  - OS: Arch Linux
+  - LAMP stack installed
+  - git, composer installed
+* Run on remote host
+  Access: http://leanhtai01.xyz  
+* Run on localhost
+  1. Clone from project from github:
+     #+begin_src shell
+       $ git clone https://github.com/leanhtai01/leanhtai01-ecommerce
+     #+end_src
+  2. Change directory to project's root directory:
+     #+begin_src shell
+       $ cd leanhtai01-ecommerce
+     #+end_src
+  3. Install project's dependencies:
+     #+begin_src shell
+       $ composer update
+     #+end_src
+  4. Change directory to db\under{}scripts directory
+     #+begin_src
+       $ cd db_scripts
+     #+end_src
+  5. Create database and insert sample data (need root privilege)
+     #+begin_src shell
+       $ mysql -u root -p < ecommerce_db.sql
+       $ mysql -u root -p < sample_data.sql
+     #+end_src
+  6. Copy/move project to Apache directory (e.g. public\under{}html)
+     #+begin_src shell
+       $ cd ../../
+       $ cp -r leanhtai01-ecommerce ~/public_html
+     #+end_src
+  7. Set Apache's environment variables as described in
+     docs/environment\under{}variables.docs.org
+* Sample accounts
+** Admin
+   - Email: admin@gmail.com
+   - Password: 123
+** Normal user:
+   - Email: votong@yahoo.com.vn
+   - Password: 123
+  
