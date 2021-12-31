@@ -1,0 +1,18 @@
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+#+TITLE: Environment variables
+* Description
+  The project need following Apache environment variables to be set:
+  | Environment variables                      | Description                              |
+  |--------------------------------------------+------------------------------------------|
+  | DB\under{}URL                              | URL to MariaDB/MySQL server              |
+  | HOST\under{}URL                            | URL to host (e.g. http://leanhtai01.xyz) |
+  | MAIL\under{}NAME                           | Sender's name                            |
+  | MAIL\under{}USERNAME                       | Sender's username                        |
+  | MAIL\under{}PASSWORD                       | Sender's password                        |
+  | AWS\under{}ACCESS\under{}KEY\under{}ID     | AWS access key id                        |
+  | AWS\under{}SECRET\under{}ACCESS\under{}KEY | AWS secret access key                    |
+  | S3\under{}BUCKET                           | AWS S3 bucket's name                     |
+  | AWS\under{}REGION                          | AWS region                               |
+* How to setup
+  Apache environment variables can be setup as describe in:
+  https://httpd.apache.org/docs/2.4/env.html#setting

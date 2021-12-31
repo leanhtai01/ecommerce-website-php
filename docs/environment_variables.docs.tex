@@ -1,0 +1,55 @@
+% Created 2021-12-31 Fri 16:42
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue}
+\author{Lê Anh Tài}
+\date{\today}
+\title{Environment variables}
+\hypersetup{
+ pdfauthor={Lê Anh Tài},
+ pdftitle={Environment variables},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Description}
+\label{sec:org298799f}
+The project need following Apache environment variables to be set:
+\begin{center}
+\begin{tabular}{ll}
+Environment variables & Description\\
+\hline
+DB\_URL & URL to MariaDB/MySQL server\\
+HOST\_URL & URL to host (e.g. \url{http://leanhtai01.xyz})\\
+MAIL\_NAME & Sender's name\\
+MAIL\_USERNAME & Sender's username\\
+MAIL\_PASSWORD & Sender's password\\
+AWS\_ACCESS\_KEY\_ID & AWS access key id\\
+AWS\_SECRET\_ACCESS\_KEY & AWS secret access key\\
+S3\_BUCKET & AWS S3 bucket's name\\
+AWS\_REGION & AWS region\\
+\end{tabular}
+\end{center}
+\section{How to setup}
+\label{sec:org7d05310}
+Apache environment variables can be setup as describe in:
+\url{https://httpd.apache.org/docs/2.4/env.html\#setting}
+\end{document}
