@@ -1,0 +1,18 @@
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=blue}
+#+TITLE: Project structure
+| directory/files   | used for                                       |
+|-------------------+------------------------------------------------|
+| conf              | Configuration scripts for project              |
+| db\under{}access  | Database access scripts                        |
+| db\under{}scripts | SQL scripts to create database and insert data |
+| diagrams          | Project's diagrams: database diagrams          |
+| docs              | Project's documents                            |
+| template          | Project's templates: header, footer,...        |
+| utils             | Utilities for upload, send email,...           |
+| validation        | Validation user's input                        |
+| vendor            | Dependencies directory                         |
+| web               | Public scripts                                 |
+| composer.json     | Define dependencies for project                |
+| composer.lock     | Generate by composer                           |
+| Procfile          | Require to deploy on Heroku                    |
+| README.md         | Project's readme file                          |

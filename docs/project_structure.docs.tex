@@ -1,0 +1,53 @@
+% Created 2021-12-31 Fri 15:28
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue}
+\author{Lê Anh Tài}
+\date{\today}
+\title{Project structure}
+\hypersetup{
+ pdfauthor={Lê Anh Tài},
+ pdftitle={Project structure},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{center}
+\begin{tabular}{ll}
+directory/files & used for\\
+\hline
+conf & Configuration scripts for project\\
+db\_access & Database access scripts\\
+db\_scripts & SQL scripts to create database and insert data\\
+diagrams & Project's diagrams: database diagrams\\
+docs & Project's documents\\
+template & Project's templates: header, footer,\ldots{}\\
+utils & Utilities for upload, send email,\ldots{}\\
+validation & Validation user's input\\
+vendor & Dependencies directory\\
+web & Public scripts\\
+composer.json & Define dependencies for project\\
+composer.lock & Generate by composer\\
+Procfile & Require to deploy on Heroku\\
+README.md & Project's readme file\\
+\end{tabular}
+\end{center}
+\end{document}
