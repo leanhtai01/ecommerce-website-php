@@ -14,7 +14,7 @@ if (!isset($_GET["account_id"])) {
 $account_id = $_GET["account_id"];
 
 $records_per_page = 5;
-$number_of_orders = get_number_of_orders();
+$number_of_orders = get_number_of_orders_by_account($account_id);
 $number_of_pages = ceil($number_of_orders / $records_per_page);
 
 // get current page
@@ -75,17 +75,17 @@ $orders = get_orders_by_account_id_limit(
       <nav aria-label="...">
         <ul class="pagination">
           <li class="page-item <?php echo $current_page <= 1 ? "disabled" : "" ?>">
-            <a class="page-link" href="<?php echo $current_page <= 1 ? "#" : $host_url . "/admin/order_manager.php?page=" . $current_page - 1 ?>" tabindex="-1" aria-disabled="true">Previous</a>
+            <a class="page-link" href="<?php echo $current_page <= 1 ? "#" : $host_url . "/order/order_detail_history.php?page=" . $current_page - 1 ?>" tabindex="-1" aria-disabled="true">Previous</a>
           </li>
           <?php for ($i = 1; $i <= $number_of_pages; ++$i) : ?>
             <li class="page-item <?php echo $current_page == $i ? "active" : "" ?>">
-              <a class="page-link" href="<?php echo $host_url; ?>/admin/order_manager.php?page=<?php echo $i; ?>">
+              <a class="page-link" href="<?php echo $host_url; ?>/order/order_detail_history.php?page=<?php echo $i; ?>">
                 <?php echo $i; ?>
               </a>
             </li>
           <?php endfor; ?>
           <li class="page-item <?php echo $current_page >= $number_of_pages ? "disabled" : "" ?>">
-            <a class="page-link" href="<?php echo $current_page >= $number_of_pages ? "#" : $host_url . "/admin/order_manager.php?page=" . $current_page + 1 ?>">Next</a>
+            <a class="page-link" href="<?php echo $current_page >= $number_of_pages ? "#" : $host_url . "/order/order_detail_history.php?page=" . $current_page + 1 ?>">Next</a>
           </li>
         </ul>
       </nav>

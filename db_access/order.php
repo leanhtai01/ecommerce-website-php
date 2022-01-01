@@ -90,6 +90,24 @@ function get_number_of_orders()
 }
 
 /**
+ * Get number of orders
+ *
+ * @param int $account_id
+ *
+ * @return int Return number of orders
+ */
+function get_number_of_orders_by_account($account_id)
+{
+  global $pdo;
+
+  $sql = "SELECT COUNT(*) FROM orders WHERE account_id = :account_id;";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["account_id" => $account_id]);
+
+  return $stmt->fetchColumn();
+}
+
+/**
  * Get a number of orders
  *
  * @param int $offset Beginning offset
@@ -246,7 +264,7 @@ function is_order_belong_to_account($order_id, $account_id)
   global $pdo;
 
   $sql = "SELECT COUNT(*) FROM orders "
-       . "WHERE id = :id AND account_id = :account_id;";
+    . "WHERE id = :id AND account_id = :account_id;";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
     "id" => $order_id,
