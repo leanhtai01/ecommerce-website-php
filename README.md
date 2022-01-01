@@ -2,6 +2,9 @@
 Remote host: http://www.leanhtai01.xyz <br>
 GitHub: https://github.com/leanhtai01/leanhtai01-ecommerce <br>
 
+# Demo videos
+Youtube: https://youtube.com/playlist?list=PLVdTf7qCSJqWupeMGudMTy3gj2yZMlrfz <br>
+
 # Admin account
 Username: admin@gmail.com <br>
 Password: 123 <br>
