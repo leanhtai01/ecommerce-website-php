@@ -1,6 +1,6 @@
 <?php
 $title = "Order detail history";
-$page = "order_detail history";
+$page = "order_detail_history";
 
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
