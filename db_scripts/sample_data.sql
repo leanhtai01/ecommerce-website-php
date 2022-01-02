@@ -82,7 +82,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `permissions` WRITE;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
-INSERT INTO `permissions` VALUES ('account_manager',0),('add_product',0),('admin_index',0),('cart',1),('checkout',1),('delete_product',0),('edit_product',0),('favorite',1),('forgot_password',2),('index',0),('index',1),('index',2),('login',2),('logout',0),('logout',1),('order_detail',1),('order_detail_history',0),('order_detail_history',1),('order_history',1),('order_manager',0),('product_detail',0),('product_detail',1),('product_detail',2),('profile',0),('profile',1),('register',2),('remove_favorite',1),('remove_product',1),('resend_validation_email',2),('reset_password',2),('restore_product',0),('revenue_statistic',0),('search_for_product',0),('search_for_product',1),('search_for_product',2),('shipping_info',1),('update_cart',1),('update_order_status',0),('verify_password',2);
+INSERT INTO `permissions` VALUES ('account_manager',0),('add_product',0),('admin_index',0),('cart',1),('checkout',1),('delete_product',0),('edit_product',0),('favorite',1),('forgot_password',2),('index',0),('index',1),('index',2),('login',2),('logout',0),('logout',1),('order_detail',1),('order_detail_history',0),('order_detail_history',1),('order_history',1),('order_manager',0),('product_detail',0),('product_detail',1),('product_detail',2),('product_manager',0),('profile',0),('profile',1),('register',2),('remove_favorite',1),('remove_product',1),('resend_validation_email',2),('reset_password',2),('restore_product',0),('revenue_statistic',0),('search_for_product',0),('search_for_product',1),('search_for_product',2),('shipping_info',1),('update_cart',1),('update_order_status',0),('verify_password',2);
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-02  8:31:45
+-- Dump completed on 2022-01-02  8:34:25
