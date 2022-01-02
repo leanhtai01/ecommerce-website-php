@@ -34,3 +34,4 @@
 | product/product\under{}detail.php                 | x     | x           | x     |
 | product/search\under{}for\under{}product.php      | x     | x           | x     |
 | index.php                                         | x     | x           | x     |
+| admin/product\under{}manager.php                  | x     |             |       |
