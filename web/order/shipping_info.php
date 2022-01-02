@@ -1,15 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
-
 $title = "Shipping information";
 $page = "shipping_info";
 
-if ($_SESSION["role_id"] != 1) {
-  http_response_code(404);
-  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
-  exit();
-}
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
 $shipping_info = get_personal_info($_SESSION["account_info"]["id"]);
 

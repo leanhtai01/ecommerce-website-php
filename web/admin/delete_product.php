@@ -1,9 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
-
 $title = "Delete product";
 $page = "delete_product";
+
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 
 if (
   $_SESSION["role_id"] != 0

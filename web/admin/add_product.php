@@ -1,18 +1,12 @@
 <?php
+$title = "Add Product";
+$page = "add_product";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/category.php");
 require_once(dirname(dirname(__DIR__)) . "/utils/upload.util.php");
 require_once(dirname(dirname(__DIR__)) . "/validation/product.validation.php");
-
-if ($_SESSION["role_id"] != 0) {
-  http_response_code(404);
-  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
-  exit();
-}
-
-$title = "Add Product";
-$page = "add_product";
 
 $allow_img_types = [IMAGETYPE_JPEG];
 $categories = get_category_list();

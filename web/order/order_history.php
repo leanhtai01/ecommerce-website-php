@@ -1,9 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
-
 $title = "Order history";
 $page = "order_history";
+
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
 
 if (!isset($_GET["account_id"])) {
   http_response_code(404);

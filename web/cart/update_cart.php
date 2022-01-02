@@ -1,9 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
-
 $title = "Update cart";
 $page = "update_cart";
+
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 
 if (
   !isset($_GET["account_id"])

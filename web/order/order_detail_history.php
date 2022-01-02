@@ -1,16 +1,17 @@
 <?php
+$title = "Order detail history";
+$page = "order_detail history";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
-
-$title = "Order detail";
-$page = "order_detail";
 
 if (
   !isset($_GET["order_id"])
   || ($_SESSION["role_id"] == 2)
   || ($_SESSION["role_id"] == 1 && !is_order_belong_to_account(
-    $_GET["order_id"],$_SESSION["account_info"]["id"]
+    $_GET["order_id"],
+    $_SESSION["account_info"]["id"]
   ))
 ) {
   http_response_code(404);

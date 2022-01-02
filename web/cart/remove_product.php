@@ -1,4 +1,7 @@
 <?php
+$title = "Remove product";
+$page = "remove_product";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 

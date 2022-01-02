@@ -1,17 +1,10 @@
 <?php
+$title = "Favorite";
+$page = "favorite";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/favorite.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
-
-// only normal logged in user can access this page
-if ($_SESSION["role_id"] != 1) {
-  http_response_code(404);
-  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
-  exit();
-}
-
-$title = "Favorite";
-$page = "favorite";
 
 $account_id = $_SESSION["account_info"]["id"];
 $records_per_page = 5;

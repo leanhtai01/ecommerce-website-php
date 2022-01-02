@@ -1,9 +1,9 @@
 <?php
+$title = "Restore product";
+$page = "restore_product";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
-
-$title = "Delete product";
-$page = "delete_product";
 
 if (
   $_SESSION["role_id"] != 0

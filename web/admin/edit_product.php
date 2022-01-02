@@ -1,4 +1,7 @@
 <?php
+$title = "Edit Product";
+$page = "edit_product";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/category.php");
@@ -16,9 +19,6 @@ if (
   include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
   exit();
 }
-
-$title = "Edit Product";
-$page = "edit_product";
 
 $allow_img_types = [IMAGETYPE_JPEG];
 $categories = get_category_list();

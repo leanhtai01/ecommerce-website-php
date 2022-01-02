@@ -1,9 +1,10 @@
 <?php
+$title = "Verify account";
+$page = "verify_account";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
-$title = "Verify account";
-$page = "verify_account";
 $error_code = null;
 $error_message = "";
 $is_valid_token = false;

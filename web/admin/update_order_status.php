@@ -1,9 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
-
 $title = "Update order status";
 $page = "update_order_status";
+
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
 
 if (
   !isset($_GET["id"])

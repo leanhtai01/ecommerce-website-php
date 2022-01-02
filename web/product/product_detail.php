@@ -1,13 +1,13 @@
 <?php
+$title = "Product Detail";
+$page = "product_detail";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/rating.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/favorite.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
-
-$title = "Product Detail";
-$page = "product_detail";
 
 $product_info = null;
 

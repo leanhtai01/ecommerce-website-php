@@ -1,9 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
-
 $title = "Search for product";
 $page = "search_for_product";
+
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 
 if (!isset($_GET["keyword"])) {
   header("Location: " . $host_url . "/index.php");

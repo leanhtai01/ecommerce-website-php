@@ -1,15 +1,9 @@
 <?php
-require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
-require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
-
-if ($_SESSION["role_id"] != 0) {
-  http_response_code(404);
-  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
-  exit();
-}
-
 $title = "Account Manager";
 $page = "account_manager";
+
+require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
+require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
 $records_per_page = 5;
 $number_of_users_account = get_number_of_users_account();
@@ -30,7 +24,7 @@ $accounts = get_user_accounts_info_limit($start_offset, $records_per_page);
 <?php include_once(dirname(dirname(__DIR__)) . "/template/header.php") ?>
 
 <h1 class="text-center">Account Management</h1>
-<div class="container-fluid">  
+<div class="container-fluid">
   <div class="row mt-4">
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -42,7 +36,7 @@ $accounts = get_user_accounts_info_limit($start_offset, $records_per_page);
             <th>Email</th>
             <th>Phone number</th>
             <th>Address</th>
-            <th>Is Verified</th>            
+            <th>Is Verified</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +55,7 @@ $accounts = get_user_accounts_info_limit($start_offset, $records_per_page);
                   echo "Yes";
                 }
                 ?>
-              </td>              
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>

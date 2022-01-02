@@ -1,11 +1,11 @@
 <?php
+$title = "Order detail";
+$page = "order_detail";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
-
-$title = "Order detail";
-$page = "order_detail";
 
 // only normal user can access this page
 if (
@@ -82,7 +82,7 @@ $products_in_cart = get_products_in_cart($_SESSION["account_info"]["id"]);
     <div class="col-md-10 text-end">
       <form action="<?php echo $host_url . "/order/checkout.php"; ?>" method="post">
         <button class="btn btn-lg btn-primary" name="checkout_btn" id="checkout_btn" type="submit">Checkout</button>
-      </form>      
+      </form>
     </div>
     <div class="col-md-1"></div>
   </div>

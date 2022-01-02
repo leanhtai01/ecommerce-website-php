@@ -1,11 +1,11 @@
 <?php
+$title = "Checkout";
+$page = "checkout";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/cart.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/order.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/product.php");
-
-$title = "Checkout";
-$page = "checkout";
 
 if (
   $_SESSION["role_id"] != 1

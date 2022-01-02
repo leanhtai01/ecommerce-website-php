@@ -1,9 +1,10 @@
 <?php
+$title = "Reset password";
+$page = "reset_password";
+
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
-$title = "Reset password";
-$page = "reset_password";
 $error_code = null;
 $error_message = "";
 $is_valid_token = false;
@@ -28,13 +29,13 @@ if (isset($fromget_email) && isset($fromget_token)) {
         // delete verified token
         delete_token($token_info);
         $is_valid_token = false;
-        
+
         if (change_password($fromget_email, $frompost_password_1)) {
           $link_to_login = "<a href='$host_url/account/login.php'>login</a>";
-          
+
           $error_code = 0;
           $error_message = "Password changed! "
-                         . "You can now $link_to_login with new password!";
+            . "You can now $link_to_login with new password!";
         } else {
           $error_code = 1;
           $error_code = "Something went wrong! Try again later!";
