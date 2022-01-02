@@ -2,6 +2,12 @@
 require_once(dirname(dirname(__DIR__)) . "/conf/init.conf.php");
 require_once(dirname(dirname(__DIR__)) . "/db_access/account.php");
 
+if ($_SESSION["role_id"] != 2) {
+  http_response_code(404);
+  include_once(dirname(dirname(__DIR__)) . "/template/not_found.php");
+  exit();
+}
+
 $title = "Register";
 $page = "register";
 $error_code = null;
