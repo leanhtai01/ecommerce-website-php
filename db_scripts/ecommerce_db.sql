@@ -44,7 +44,7 @@ DROP TABLE IF EXISTS permissions;
 CREATE TABLE permissions (
   page VARCHAR(100) NOT NULL,
   role_id INT NOT NULL,
-  CONSTRAINT pk_permissions PRIMARY KEY (page)
+  CONSTRAINT pk_permissions PRIMARY KEY (page, role_id)
 );
 
 DROP TABLE IF EXISTS tokens;
