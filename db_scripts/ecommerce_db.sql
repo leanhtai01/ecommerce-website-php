@@ -40,6 +40,13 @@ CREATE TABLE roles (
   CONSTRAINT unq_roles_role_name UNIQUE (role_name)
 );
 
+DROP TABLE IF EXISTS permissions;
+CREATE TABLE permissions (
+  page VARCHAR(100) NOT NULL,
+  role_id INT NOT NULL,
+  CONSTRAINT pk_permissions PRIMARY KEY (page)
+);
+
 DROP TABLE IF EXISTS tokens;
 CREATE TABLE tokens (
   id INT NOT NULL AUTO_INCREMENT,
