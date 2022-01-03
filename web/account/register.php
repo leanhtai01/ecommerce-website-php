@@ -59,7 +59,7 @@ if (isset($_POST["register_btn"])) {
       <label for="password">Password</label>
     </div>
     <div class="col-12 form-floating">
-      <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone number" required>
+      <input type="tel" class="form-control" name="phone_number" id="phone_number" placeholder="Phone number" pattern="(84|0[3|5|7|8|9])+([0-9]{8})" required>
       <label for="phone_number">Phone number</label>
     </div>
     <div class="col-12 form-floating">
