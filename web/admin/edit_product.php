@@ -90,7 +90,7 @@ if (isset($_POST["update_product_btn"])) {
       <label for="price">Price</label>
     </div>
     <div class="col-12 form-floating">
-      <input type="number" class="form-control" name="quantity_in_stock" id="quantity_in_stock" placeholder="Quantity in stock" value="<?php echo $product_info["quantity_in_stock"]; ?>" required>
+      <input type="number" class="form-control" name="quantity_in_stock" id="quantity_in_stock" placeholder="Quantity in stock" value="<?php echo $product_info["quantity_in_stock"]; ?>" required min="1" max="100000">
       <label for="quantity_in_stock">Quantity in stock</label>
     </div>
     <div class="col-12 form-floating">
