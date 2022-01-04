@@ -67,7 +67,7 @@ if (isset($_POST["add_product_btn"])) {
       <label for="product_name">Product name</label>
     </div>
     <div class="col-12 form-floating">
-      <input type="text" class="form-control" name="price" id="price" placeholder="Price" required>
+      <input type="number" class="form-control" name="price" id="price" placeholder="Price" required min="0" step="any">
       <label for="price">Price</label>
     </div>
     <div class="col-12 form-floating">
