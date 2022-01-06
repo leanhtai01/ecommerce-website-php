@@ -120,7 +120,7 @@ function get_order_list_limit($offset, $number_of_order)
 {
   global $pdo;
 
-  $sql = "SELECT id, ship_name, ship_phone_number, ship_address, status "
+  $sql = "SELECT id, ship_name, ship_phone_number, ship_address, status, order_date "
     . "FROM orders "
     . "LIMIT $offset, $number_of_order;";
   $stmt = $pdo->prepare($sql);

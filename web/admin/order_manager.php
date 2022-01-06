@@ -32,6 +32,7 @@ $orders = get_order_list_limit($start_offset, $records_per_page);
         <thead class="table-light">
           <tr>
             <th>Id</th>
+            <th>Order date</th>
             <th>Ship name</th>
             <th>Ship phone number</th>
             <th>Ship address</th>
@@ -44,6 +45,7 @@ $orders = get_order_list_limit($start_offset, $records_per_page);
           <?php foreach ($orders as $order) : ?>
             <tr>
               <td><?php echo $order["id"]; ?></td>
+              <td><?php echo $order["order_date"]; ?></td>
               <td><?php echo $order["ship_name"]; ?></td>
               <td><?php echo $order["ship_phone_number"]; ?></td>
               <td><?php echo $order["ship_address"]; ?></td>
