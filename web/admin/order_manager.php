@@ -36,6 +36,7 @@ $orders = get_order_list_limit($start_offset, $records_per_page);
             <th>Ship name</th>
             <th>Ship phone number</th>
             <th>Ship address</th>
+            <th>Payment total</th>
             <th>Status</th>
             <th></th>
             <th></th>
@@ -49,6 +50,7 @@ $orders = get_order_list_limit($start_offset, $records_per_page);
               <td><?php echo $order["ship_name"]; ?></td>
               <td><?php echo $order["ship_phone_number"]; ?></td>
               <td><?php echo $order["ship_address"]; ?></td>
+              <td class="text-success">VND <?php echo number_format(get_payment_total_history($order["id"]), 2); ?></td>
               <td><?php echo $order["status"]; ?></td>
               <td><a class="btn btn-primary" href="<?php echo $host_url . "/admin/update_order_status.php?id=" . $order["id"]; ?>">Update status</a></td>
               <td><a class="btn btn-secondary" href="<?php echo $host_url . "/order/order_detail_history.php?order_id=" . $order["id"] ?>">View detail</a></td>
