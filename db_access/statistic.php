@@ -51,7 +51,8 @@ function get_revenue_by_quarter()
   $sql = "SELECT SUM(p.price * od.quantity) AS revenue_by_quarter "
     . "FROM orders o INNER JOIN order_details od ON o.id = od.order_id "
     . "INNER JOIN products p ON p.id = od.product_id "
-    . "WHERE QUARTER(o.order_date) = QUARTER(CURDATE()) "
+    . "WHERE (QUARTER(o.order_date) = QUARTER(CURDATE())) "
+    . "AND (YEAR(o.order_date) = YEAR(CURDATE()))"
     . "GROUP BY QUARTER(o.order_date);";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
